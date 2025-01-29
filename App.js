@@ -39,6 +39,7 @@ export default function App() {
     <>
 
 
+
       <NavigationContainer>
         <Stack.Navigator
           initialRouteName="OnboardingScreen"
@@ -73,5 +74,3 @@ export default function App() {
     </>
   );
 }
-
-

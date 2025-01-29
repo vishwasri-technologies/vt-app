@@ -458,6 +458,11 @@ const styles = StyleSheet.create({
     fontSize: RFPercentage(2),
     fontWeight: "bold",
   },
+
+
+
+  
+
   projectsList: {
     paddingHorizontal: wp("5%"),
     paddingVertical: hp("3%"),
@@ -475,6 +480,9 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 3,
   },
+
+
+
   projectImage: {
     width: "100%",
     height: hp("20%"),
