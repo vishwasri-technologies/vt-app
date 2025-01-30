@@ -41,7 +41,7 @@ const LoginUpScreen = ({ navigation }) => {
 
         <TouchableOpacity 
           style={styles.button}
-          onPress={() => navigation.navigate("HomeScreen")}
+          onPress={() => navigation.navigate("BottomScreen")}
         >
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
