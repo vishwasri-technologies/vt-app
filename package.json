@@ -11,6 +11,7 @@
   },
   "dependencies": {
 <<<<<<< HEAD
+<<<<<<< HEAD
     "@react-native-async-storage/async-storage": "^2.1.0",
 <<<<<<< HEAD
     "@react-native-community/checkbox": "^0.5.17",
@@ -21,6 +22,9 @@
     "@react-navigation/stack": "^7.1.1",
     "axios": "^1.7.9",
 =======
+=======
+    "@react-native-async-storage/async-storage": "^2.1.0",
+>>>>>>> b9d659a (Edit profile)
     "@react-native-masked-view/masked-view": "^0.3.2",
     "@react-navigation/bottom-tabs": "^7.2.0",
 <<<<<<< HEAD
@@ -44,9 +48,13 @@
     "react-native": "0.76.6",
     "react-native-gesture-handler": "~2.20.2",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "react-native-image-picker": "^7.2.3",
 =======
 >>>>>>> ac7a113 (Done with forgot password screen)
+=======
+    "react-native-image-picker": "^7.2.3",
+>>>>>>> b9d659a (Edit profile)
     "react-native-linear-gradient": "^2.8.3",
 <<<<<<< HEAD
     "react-native-maps": "^1.20.1",
