@@ -7,6 +7,7 @@ import OnboardingScreen from "./Components/OnboardingScreen";
 import ForgotScreen from "./Components/ForgotScreen";
 import BottomScreen from "./navigation/BottomScreen";
 import EditProfileScreen from "./Components/EditProfileScreen";
+import HomeScreen from "./Components/HomeScreen";
 // import Aboutus from "./Components/Aboutus";
 // import Careers from "./Components/Careers";
 // import Contactus from "./Components/Contactus";
@@ -30,6 +31,7 @@ export default function App() {
         <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
         <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
         <Stack.Screen name="LoginUpScreen" component={LoginUpScreen} />
+        <Stack.Screen name="HomeScreen" component={HomeScreen} />
         <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} />
         <Stack.Screen name="ForgotScreen" component={ForgotScreen} />
         <Stack.Screen name="BottomScreen" component={BottomScreen} />

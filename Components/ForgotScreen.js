@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -13,28 +13,90 @@ import {
 } from "react-native-responsive-dimensions";
 
 const ForgotScreen = ({ navigation }) => {
+
+  const [emailOrPhone, setEmailOrPhone] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  const handleResetPassword = async () => {
+    if (!emailOrPhone || !newPassword || !confirmPassword) {
+      Alert.alert("Error", "All fields are required.");
+      return;
+    }
+
+    if (newPassword !== confirmPassword) {
+      Alert.alert("Error", "Passwords do not match.");
+      return;
+    }
+
+    try {
+      const response = await axios.post("http://192.168.29.167:5000/ForgotScreen", {
+        emailOrPhone,
+        newPassword,
+        confirmPassword,
+      });
+
+      if (response.status === 200) {
+        Alert.alert("Success", "Password updated successfully!");
+        navigation.navigate("LoginUpScreen");
+      }
+    } catch (error) {
+      console.error("Error:", error.response?.data || error.message);
+      Alert.alert("Error", error.response?.data?.message || "Something went wrong");
+    }
+  };
+
   return (
+    // <View style={styles.container}>
+    //   <View style={styles.header}>
+    //     <Text style={styles.headerText}>Create new password</Text>
+    //     <Text style={styles.subHeader}>Keep it simple.keep it safe.</Text>
+    //   </View>
+
+    //   <View style={styles.formContainer}>
+    //     <Text style={styles.label}>New Password</Text>
+    //     <TextInput
+    //       style={styles.input}
+    //       placeholder="New Password"
+    //       placeholderTextColor="#999"
+    //     />
+
+    //     <Text style={styles.label}> ConfirmPassword</Text>
+    //     <TextInput
+    //       style={styles.input}
+    //       placeholder="ConfirmPassword"
+    //       placeholderTextColor="#999"
+    //       secureTextEntry
+    //     />
+
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headerText}>Create new password</Text>
-        <Text style={styles.subHeader}>Keep it simple.keep it safe.</Text>
-      </View>
+    <View style={styles.header}>
+      <Text style={styles.headerText}>Create new password</Text>
+      <Text style={styles.subHeader}>Keep it simple. Keep it safe.</Text>
+    </View>
 
-      <View style={styles.formContainer}>
-        <Text style={styles.label}>New Password</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="New Password"
-          placeholderTextColor="#999"
-        />
+    <View style={styles.formContainer}>
 
-        <Text style={styles.label}> ConfirmPassword</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="ConfirmPassword"
-          placeholderTextColor="#999"
-          secureTextEntry
-        />
+
+      <Text style={styles.label}>New Password</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="New Password"
+        placeholderTextColor="#999"
+        secureTextEntry
+        value={newPassword}
+        onChangeText={setNewPassword}  // Capture user input
+      />
+
+      <Text style={styles.label}>Confirm Password</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Confirm Password"
+        placeholderTextColor="#999"
+        secureTextEntry
+        value={confirmPassword}
+        onChangeText={setConfirmPassword}  // Capture user input
+      />
 
         <TouchableOpacity
           style={styles.button}
