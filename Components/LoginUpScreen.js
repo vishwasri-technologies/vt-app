@@ -351,4 +351,3 @@ export default LoginUpScreen;
 
 // export default LoginUpScreen;
 
-
