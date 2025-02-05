@@ -8,10 +8,17 @@ import {
 import office1 from "../Images/office1.png";
 import office2 from "../Images/office2.png";
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 import BottomScreen from "../navigation/BottomScreen";
 >>>>>>> ca07a65 (Aboutus)
+=======
+import BottomScreen from "../navigation/BottomScreen";
+=======
+
+>>>>>>> f535048 (Second)
+>>>>>>> 75e5302 (Second)
 
 export default function Aboutus() {
   return (
@@ -83,10 +90,17 @@ export default function Aboutus() {
       </View>
       <View>
 <<<<<<< HEAD
+<<<<<<< HEAD
     
 =======
         <BottomScreen />
 >>>>>>> ca07a65 (Aboutus)
+=======
+        <BottomScreen />
+=======
+    
+>>>>>>> f535048 (Second)
+>>>>>>> 75e5302 (Second)
       </View>
     </ScrollView>
   );

@@ -17,7 +17,7 @@ const CustomCheckbox = ({ isChecked, onPress }) => (
 );
 
 const feedbackType = {
-  appPerformance: false, 
+  appPerformance: false,
   featureRequest: false,
   customerSupport: false,
   usabilityDesign: false,
@@ -26,62 +26,137 @@ const feedbackType = {
 
 export default function Feedback() {
   const [feedback, setFeedback] = useState(feedbackType);
+  const [fullName, setFullName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [message, setMessage] = useState('');
+  const [rating, setRating] = useState(0); 
 
+  // Correctly defined handleCheckboxChange function
   const handleCheckboxChange = (type) => {
-    setFeedback(prev => ({
+    setFeedback((prev) => ({
       ...prev,
-      [type]: !prev[type]
+      [type]: !prev[type],
     }));
+  };
+
+  
+  const handleSubmit = async () => {
+    // Validation
+    if (!/^[A-Za-z\s]+$/.test(fullName)) {
+      alert('Full Name must contain only letters and spaces');
+      return;
+    }
+    if (!email.trim() || !/\S+@\S+\.\S+/.test(email)) {
+      alert('Please enter a valid email address');
+      return;
+    }
+    if (!phone.trim() || !/^\d{10}$/.test(phone)) {
+      alert('Please enter a valid phone number with 10 digits');
+      return;
+    }
+    if (!message.trim()) {
+      alert('Message cannot be empty');
+      return;
+    }
+  
+    const feedbackTypes = [];
+    if (feedback.appPerformance) feedbackTypes.push('App Performance');
+    if (feedback.featureRequest) feedbackTypes.push('Feature Request');
+    if (feedback.customerSupport) feedbackTypes.push('Customer Support');
+    if (feedback.usabilityDesign) feedbackTypes.push('Usability & Design');
+    if (feedback.generalFeedback) feedbackTypes.push('General Feedback');
+  
+    const data = {
+      fullName,
+      email,
+      phone,
+      message,
+      feedbackTypes,
+      rating,
+    };
+  
+    try {
+      const response = await fetch('http://192.168.29.167:5000/Feedback', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+  
+      const result = await response.json();
+      alert(result.message); // Show success message to the user
+    } catch (err) {
+      console.error('Error submitting feedback:', err);
+      alert('Error submitting feedback');
+    }
   };
 
   const renderStars = () => {
     return Array(5).fill(0).map((_, i) => (
-      <Text key={i} style={styles.star}>{"\u2605"}</Text>
+      <Text
+        key={i}
+        style={styles.star}
+        onPress={() => setRating(i + 1)} // Set rating when a star is clicked
+      >
+        {i < rating ? '\u2605' : '\u2606'}
+      </Text>
     ));
   };
 
   return (
     <ScrollView>
-    <View style={styles.container}>
-      <Text style={styles.title}>Feedback</Text>
-      <Text style={styles.subtitle}>We Value Your Feedback!</Text>
-      <Text style={styles.description}>Your insights help us enhance our services and improve your experience.</Text>
+      <View style={styles.container}>
+        <Text style={styles.title}>Feedback</Text>
+        <Text style={styles.subtitle}>We Value Your Feedback!</Text>
+        <Text style={styles.description}>Your insights help us enhance our services and improve your experience.</Text>
 
-      <Text style={styles.sectionTitle}>What is your feedback about?</Text>
-      {Object.keys(feedback).map((type) => (
-        <View key={type} style={styles.checkboxContainer}>
-          <CustomCheckbox
-            isChecked={feedback[type]}
-            onPress={() => handleCheckboxChange(type)}
-          />
-          <Text style={styles.checkboxLabel}>
-  {type === 'appPerformance' ? 'App Performance' : type.charAt(0).toUpperCase() + type.slice(1)}
-</Text>
+        <Text style={styles.sectionTitle}>What is your feedback about?</Text>
+        {Object.keys(feedback).map((type) => (
+          <View key={type} style={styles.checkboxContainer}>
+            <CustomCheckbox isChecked={feedback[type]} onPress={() => handleCheckboxChange(type)} />
+            <Text style={styles.checkboxLabel}>{type.charAt(0).toUpperCase() + type.slice(1)}</Text>
+          </View>
+        ))}
+
+        <Text style={styles.sectionTitle}>Tell us more about your experience</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Full Name"
+          value={fullName}
+          onChangeText={(text) => setFullName(text)} // Store full name
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Email Address"
+          value={email}
+          onChangeText={(text) => setEmail(text)} // Store email
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Phone Number"
+          value={phone}
+          onChangeText={(text) => setPhone(text)} // Store phone number
+        />
+        <TextInput
+          style={[styles.input, { height: hp('15%') }]}
+          placeholder="Message"
+          multiline
+          value={message}
+          onChangeText={(text) => setMessage(text)} // Store message
+        />
+
+        <TouchableOpacity style={styles.submitButton} onPress={handleSubmit}>
+          <Text style={styles.submitButtonText}>Submit</Text>
+        </TouchableOpacity>
+
+        <View style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <Text style={styles.sectionTitle}>Rate your Experience</Text>
+          <Text style={{ fontSize: wp('4.5%') }}>How would you rate our services?</Text>
+          <View style={styles.ratingContainer}>{renderStars()}</View>
         </View>
-      ))}
-
-      <Text style={styles.sectionTitle}>Tell us more about your experience</Text>
-      <TextInput style={styles.input} placeholder="Full Name" />
-      <TextInput style={styles.input} placeholder="Email Address" />
-      <TextInput style={styles.input} placeholder="Phone Number" />
-      <TextInput 
-        style={[styles.input, { height: hp('15%') }]} 
-        placeholder="Message" 
-        multiline 
-      />
-   <TouchableOpacity style={styles.submitButton}>
-        <Text style={styles.submitButtonText}>Submit</Text>
-      </TouchableOpacity>
-      <View style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-      <Text style={styles.sectionTitle}>Rate your Experience</Text>
-      <Text style={{fontSize: wp('4.5%')}} >How would you rate our services?</Text>
-      <View style={styles.ratingContainer}>
-        {renderStars()}
       </View>
-      </View>
-
-   
-    </View>
     </ScrollView>
   );
 }
@@ -175,3 +250,4 @@ marginRight: wp('28%'),
     fontWeight: '600',
   },
 });
+

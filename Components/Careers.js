@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 import React from 'react';
 import { View, Text,textAlign, Alert,StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
@@ -48,6 +49,69 @@ const jobListings = [
 
 export default function Careers() {
   return (
+=======
+<<<<<<< HEAD
+import { View, Text } from 'react-native'
+import React from 'react'
+
+export default function Careers() {
+  return (
+    <View>
+      <Text>Careers</Text>
+    </View>
+  )
+}
+=======
+import React from 'react';
+import { View, Text,textAlign, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
+import Icon from 'react-native-vector-icons/Ionicons'
+
+const jobListings = [
+  {
+    title: 'Full Stack Developer',
+    location: ' Begumpet, Hyderabad',
+    experience: '0-2 Years',
+    skills: 'Frontend, Backend, Database',
+  },
+  {
+    title: 'Web Developer',
+    location: 'Begumpet, Hyderabad',
+    experience: '0-2 Years',
+    skills: 'APIs, SEO, Responsive Web Design',
+  },
+  {
+    title: 'App Developer',
+    location: 'Begumpet, Hyderabad',
+    experience: '0-2 Years',
+    skills: 'Cross-Platform Development',
+  },
+  {
+    title: 'UI/UX Designer',
+    location: 'Begumpet, Hyderabad',
+    experience: '0-2 Years',
+    skills: 'Wireframing, Prototyping, Responsive',
+  },
+  {
+    title: 'Digital Marketing',
+    location: 'Begumpet, Hyderabad',
+    experience: '0-2 Years',
+    skills: 'SEO & Content Marketing, CRO',
+  },
+  {
+    title: 'Human Resources',
+    location: 'Begumpet, Hyderabad',
+    experience: '0-2 Years',
+    skills: 'Recruitment, Relations, Payroll',
+  },
+];
+
+export default function Careers() {
+  return (
+>>>>>>> 75e5302 (Second)
     <ScrollView style={styles.container}>
       <Text style={styles.header}>Join us at </Text>
         
@@ -71,7 +135,11 @@ export default function Careers() {
           </View>
           <Text style={styles.jobSkills}>{job.skills}</Text>
           <TouchableOpacity style={styles.applyButton}>
+<<<<<<< HEAD
             <Text style={styles.applyButtonText} onPress={() => Alert.alert('Jobs','No Vacancy')}>Apply now</Text>
+=======
+            <Text style={styles.applyButtonText} onPress={() => alert('No applications')}>Apply now</Text>
+>>>>>>> 75e5302 (Second)
           </TouchableOpacity>
         </View>
       ))}
@@ -150,3 +218,7 @@ const styles = StyleSheet.create({
 
   },
 });
+<<<<<<< HEAD
+=======
+>>>>>>> f535048 (Second)
+>>>>>>> 75e5302 (Second)

@@ -10,17 +10,22 @@
     "web": "expo start --web"
   },
   "dependencies": {
-<<<<<<< HEAD
-<<<<<<< HEAD
+
+   
+
     "@react-native-async-storage/async-storage": "^2.1.0",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "@react-native-community/checkbox": "^0.5.17",
+=======
+
+>>>>>>> 75e5302 (Second)
     "@react-native-masked-view/masked-view": "^0.3.2",
     "@react-navigation/bottom-tabs": "^7.2.0",
-    "@react-navigation/drawer": "^7.1.1",
     "@react-navigation/native": "^7.0.14",
     "@react-navigation/stack": "^7.1.1",
     "axios": "^1.7.9",
+<<<<<<< HEAD
 =======
 =======
     "@react-native-async-storage/async-storage": "^2.1.0",
@@ -41,25 +46,29 @@
     "@react-navigation/stack": "^7.1.1",
 >>>>>>> ac7a113 (Done with forgot password screen)
 >>>>>>> 33dc290 (Done with forgot password screen)
+=======
+
+>>>>>>> 75e5302 (Second)
     "expo": "~52.0.25",
     "expo-status-bar": "~2.0.1",
     "formik": "^2.4.6",
     "react": "18.3.1",
     "react-native": "0.76.6",
     "react-native-gesture-handler": "~2.20.2",
-<<<<<<< HEAD
-<<<<<<< HEAD
+
     "react-native-image-picker": "^7.2.3",
-=======
->>>>>>> ac7a113 (Done with forgot password screen)
-=======
-    "react-native-image-picker": "^7.2.3",
->>>>>>> b9d659a (Edit profile)
+
+
+
     "react-native-linear-gradient": "^2.8.3",
+<<<<<<< HEAD
 <<<<<<< HEAD
     "react-native-maps": "^1.20.1",
 =======
 >>>>>>> 575727c (first commit)
+=======
+    "react-native-maps": "^1.20.1",
+>>>>>>> 75e5302 (Second)
     "react-native-paper": "^5.13.1",
     "react-native-reanimated": "^3.16.7",
     "react-native-responsive-dimensions": "^3.1.1",
@@ -73,11 +82,16 @@
   },
   "devDependencies": {
 <<<<<<< HEAD
+<<<<<<< HEAD
     "@babel/core": "^7.20.0",
     "@react-native-community/cli": "latest"
 =======
     "@babel/core": "^7.20.0"
 >>>>>>> 575727c (first commit)
+=======
+    "@babel/core": "^7.20.0",
+    "@react-native-community/cli": "latest"
+>>>>>>> 75e5302 (Second)
   },
   "private": true
 }
