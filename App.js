@@ -14,7 +14,10 @@ import EditProfileScreen from "./Components/EditProfileScreen";
 // import Meet from "./Components/Meet";
 // import Notifications from "./Components/Notifications";
 import DrawerNavigator from "./Components/DrawerNavigator";
-
+import Privacy from "./Components/Privacy";
+import Help from "./Components/Help";
+import Terms from "./Components/Terms";
+import Join from "./Components/Join";
 
 
 
@@ -43,7 +46,10 @@ export default function App() {
         <Stack.Screen name="Notifications" component={Notifications} /> */}
        
        <Stack.Screen name="DrawerNavigator" component={DrawerNavigator} />
-     
+       <Stack.Screen name="Privacy" component={Privacy} />
+       <Stack.Screen name="Help" component={Help} />
+      <Stack.Screen name="Terms" component={Terms} />
+      <Stack.Screen name="Join" component={Join} /> 
    
       </Stack.Navigator>
     </NavigationContainer>
