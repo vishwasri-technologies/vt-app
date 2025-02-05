@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from 'react';
-import { View, Text, TextInput, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TextInput, Image, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import * as ImagePicker from 'react-native-image-picker';
@@ -39,6 +39,7 @@ const EditProfileScreen = () => {
     );
   };
   return (
+    <ScrollView>
     <View style={styles.container}>
       <View style={styles.headerContainer}>
         <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
@@ -56,17 +57,22 @@ const EditProfileScreen = () => {
           <Icon name="pencil" size={wp('4%')} color="black" />
         </TouchableOpacity>
       </View>
-
-      <TextInput style={styles.input} placeholder="Your Name" value={form.name} onChangeText={text => handleChange('name', text)} />
-      <TextInput style={styles.input} placeholder="Email" value={form.email} onChangeText={text => handleChange('email', text)} keyboardType="email-address" />
-      <TextInput style={styles.input} placeholder="Phone" value={form.phone} onChangeText={text => handleChange('phone', text)} keyboardType="phone-pad" />
-      <TextInput style={styles.input} placeholder="Date of Birth" value={form.dob} onChangeText={text => handleChange('dob', text)} />
-      <TextInput style={styles.input} placeholder="Address" value={form.address} onChangeText={text => handleChange('address', text)} />
+    <Text>Name :</Text>
+      <TextInput style={styles.input}  value={form.name} onChangeText={text => handleChange('name', text)} />
+        <Text>Email :</Text>
+      <TextInput style={styles.input}  value={form.email} onChangeText={text => handleChange('email', text)} keyboardType="email-address" />
+        <Text>Phone :</Text>
+      <TextInput style={styles.input}  value={form.phone} onChangeText={text => handleChange('phone', text)} keyboardType="phone-pad" />
+        <Text>Date of Birth :</Text>
+      <TextInput style={styles.input}  value={form.dob} onChangeText={text => handleChange('dob', text)} />
+        <Text>Address :</Text>
+      <TextInput style={styles.input}  value={form.address} onChangeText={text => handleChange('address', text)} />
       
       <TouchableOpacity style={styles.saveButton}>
         <Text style={styles.saveButtonText}>Save changes</Text>
       </TouchableOpacity>
     </View>
+    </ScrollView>
   );
 };
 

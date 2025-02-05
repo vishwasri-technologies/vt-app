@@ -11,14 +11,19 @@ export default function BottomScreen() {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
-        headerShown: false, 
+        headerShown: false,
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
-          if (route.name === "Home") iconName = focused ? "home" : "home-outline";
-          else if (route.name === "Portfolio") iconName = focused ? "briefcase" : "briefcase-outline";
-          else if (route.name === "Services") iconName = focused ? "construct" : "construct-outline";
-          else if (route.name === "Profile") iconName = focused ? "person" : "person-outline";
+          if (route.name === "Home")
+            iconName = focused ? "home" : "home-outline";
+          else if (route.name === "Portfolio")
+            iconName = focused ? "briefcase" : "briefcase-outline";
+          else if (route.name === "Services")
+            iconName = focused ? "desktop" : "desktop-outline";
+          else if (route.name === "Profile")
+            iconName = focused ? "person-circle" : "person-circle-outline";
           return <Ionicons name={iconName} size={size} color={color} />;
+          
         },
         tabBarActiveTintColor: "#007bff",
         tabBarInactiveTintColor: "gray",
@@ -39,4 +44,3 @@ export default function BottomScreen() {
     </Tab.Navigator>
   );
 }
-

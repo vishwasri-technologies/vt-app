@@ -4,20 +4,22 @@ import {
   Text,
   Button,
   View,
+  
   ScrollView,
   Image,
   TouchableOpacity,
   TextInput,
   FlatList,
 } from "react-native";
-import { useNavigation } from "@react-navigation/native";
-import { Ionicons } from "@expo/vector-icons"; // Importing icons
+import { useNavigation, DrawerActions } from "@react-navigation/native";
+import  { useEffect } from 'react'; 
+import { Ionicons } from "@expo/vector-icons";
 import image1 from "../Images/image1.png";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
-
+import { createDrawerNavigator } from "@react-navigation/drawer";
 
 import { RFPercentage } from "react-native-responsive-fontsize";
 import s1 from "../Images/s1.png";
@@ -29,6 +31,7 @@ import s6 from "../Images/student1.png";
 import s7 from "../Images/student2.png";
 import s8 from "../Images/student3.png";
 import s9 from "../Images/mobile.png";
+import DrawerNavigator from "./DrawerNavigator";
 
 const services = [
   { id: "1", title: "Web Development", image: s4 },
@@ -37,42 +40,52 @@ const services = [
   { id: "4", title: "Graphic Design", image: s1 },
 ];
 
-const projects =[
+const projects = [
   {
     id: "1",
-    title:"EduNova",
-    description:"A complete education management system designed for institutions to manage courses, student records, fees.",
- image: s6
-  },{
-    id: "2",  
-    title:"EternaJewels",
-    description:"An elegant jewelry shopping platform offering a wide range of collections, personalized recommendations.",
-image:s7,
+    title: "EduNova",
+    description:
+      "A complete education management system designed for institutions to manage courses, student records, fees.",
+    image: s6,
   },
   {
-    id:"3",
-    title:"TheraCare",  
-    description:"A physiotherapy consultation app connecting patients with expert therapists, offering appointment booking.",
+    id: "2",
+    title: "EternaJewels",
+    description:
+      "An elegant jewelry shopping platform offering a wide range of collections, personalized recommendations.",
+    image: s7,
+  },
+  {
+    id: "3",
+    title: "TheraCare",
+    description:
+      "A physiotherapy consultation app connecting patients with expert therapists, offering appointment booking.",
     image: s8,
-  }
-]
-
+  },
+];
+const openDrawer = createDrawerNavigator();
 const HomeScreen = () => {
   const navigation = useNavigation();
+  
+  useEffect(() => {
+    navigation.navigate("DrawerNavigator");
+  }, [navigation]); 
+
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      {/* HEADER */}
       <View style={styles.header}>
-        <TouchableOpacity onPress={() => navigation.openDrawer()}>
+        <TouchableOpacity
+          onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}
+        >
           <Ionicons name="menu" size={30} color="white" />
         </TouchableOpacity>
+
         <TouchableOpacity onPress={() => alert("Notifications clicked!")}>
           <Ionicons name="notifications-outline" size={30} color="white" />
         </TouchableOpacity>
       </View>
 
-      {/* IMAGE & TITLE */}
       <View style={styles.imageContainer}>
         <Image source={image1} style={styles.image} />
         <Text style={styles.mainText}>
@@ -80,7 +93,6 @@ const HomeScreen = () => {
         </Text>
       </View>
 
-      {/* SEARCH BAR */}
       <View style={styles.searchContainer}>
         <Ionicons name="search" size={20} color="#999" style={styles.icon} />
         <TextInput
@@ -100,19 +112,19 @@ const HomeScreen = () => {
 
       {/* HORIZONTAL SERVICE CARDS */}
       <View>
-      <FlatList
-        data={services}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        keyExtractor={(item) => item.id}
-        contentContainerStyle={styles.servicesList}
-        renderItem={({ item }) => (
-          <TouchableOpacity style={styles.serviceCard}>
-            <Image source={item.image} style={styles.serviceImage} />
-            <Text style={styles.serviceText}>{item.title}</Text>
-          </TouchableOpacity>
-        )}
-      />
+        <FlatList
+          data={services}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          keyExtractor={(item) => item.id}
+          contentContainerStyle={styles.servicesList}
+          renderItem={({ item }) => (
+            <TouchableOpacity style={styles.serviceCard}>
+              <Image source={item.image} style={styles.serviceImage} />
+              <Text style={styles.serviceText}>{item.title}</Text>
+            </TouchableOpacity>
+          )}
+        />
       </View>
       <View style={styles.partnerContainer}>
         <Image source={s5} style={styles.partnerImage} />
@@ -121,68 +133,54 @@ const HomeScreen = () => {
           App Development solutions tailored to your needs."
         </Text>
       </View>
-    
+
       <View>
-  <View style={styles.servicesHeader}>
-    <Text style={styles.servicesTitle}>Popular Projects</Text>
-  </View>
-  <FlatList
-    data={projects}
-    horizontal
-    showsHorizontalScrollIndicator={false}
-    keyExtractor={(item) => item.id}
-    contentContainerStyle={styles.projectsList}
-    renderItem={({ item }) => (
-      <View style={styles.projectCard}>
-        <Image source={item.image} style={styles.projectImage} />
-        <Text style={styles.projectTitle}>{item.title}</Text>
-        <Text style={styles.projectDescription}>{item.description}</Text>
-        <TouchableOpacity
-          style={styles.viewProfileButton}
-          onPress={() => alert(`Viewing ${item.title} details`)}
-        >
-          <Text style={styles.viewProfileButtonText}>View Profile</Text>
-        </TouchableOpacity>
+        <View style={styles.servicesHeader}>
+          <Text style={styles.servicesTitle}>Popular Projects</Text>
+        </View>
+        <FlatList
+          data={projects}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          keyExtractor={(item) => item.id}
+          contentContainerStyle={styles.projectsList}
+          renderItem={({ item }) => (
+            <View style={styles.projectCard}>
+              <Image source={item.image} style={styles.projectImage} />
+              <Text style={styles.projectTitle}>{item.title}</Text>
+              <Text style={styles.projectDescription}>{item.description}</Text>
+              <TouchableOpacity
+                style={styles.viewProfileButton}
+                onPress={() => alert(`Viewing ${item.title} details`)}
+              >
+                <Text style={styles.viewProfileButtonText}>View Profile</Text>
+              </TouchableOpacity>
+            </View>
+          )}
+        />
       </View>
-    )}
-  />
-</View>
-{/* <View style={styles.mm}>
-  <View style={styles.mm1}>
-<Image source={s9} style={styles.mm3} />
-<Text>"Have a project in mind? Contact us today to discuss your requirements. We're here to bring your vision to life!"</Text>
-</View>
-<Button
-  title="Call Us"
-  color="#841584"
-  accessibilityLabel="Learn more about this purple button"
-/>
-</View> */}
-<View style={styles.mm}>
-  <View style={styles.mmContent}>
- 
-    <View style={styles.imageWrapper}>
-      <Image source={s9} style={styles.mmImage} />
-  
+
+      <View style={styles.mm}>
+        <View style={styles.mmContent}>
+          <View style={styles.imageWrapper}>
+            <Image source={s9} style={styles.mmImage} />
+          </View>
+
+          <View style={styles.textButtonContainer}>
+            <Text style={styles.mmText}>
+              "Have a project in mind? Contact us today to discuss your
+              requirements. We're here to bring your vision to life!"
+            </Text>
+
+            <TouchableOpacity
+              style={styles.customButton}
+              onPress={() => alert("Calling...")}
+            >
+              <Text style={styles.buttonText}>Call Us</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
       </View>
- 
-    <View style={styles.textButtonContainer}>
-      <Text style={styles.mmText}>
-        "Have a project in mind? Contact us today to discuss your requirements. We're here to bring your vision to life!"
-      </Text>
-    
-      
-      <TouchableOpacity 
-        style={styles.customButton}
-        onPress={() => alert('Calling...')}
-      >
-        <Text style={styles.buttonText}>Call Us</Text>
-      </TouchableOpacity>
-      </View>
-  
-  </View>
-  
-</View>
     </ScrollView>
   );
 };
@@ -218,7 +216,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "white",
     position: "absolute",
-    bottom: hp("8%"),
+    bottom: hp("6%"),
     left: wp("5%"),
     right: wp("5%"),
     zIndex: 10,
@@ -334,12 +332,12 @@ const styles = StyleSheet.create({
     fontSize: RFPercentage(2),
     fontWeight: "bold",
   },
-  
+
   projectsList: {
     paddingHorizontal: wp("5%"),
     paddingVertical: hp("3%"),
   },
-  
+
   projectCard: {
     width: wp("80%"),
     backgroundColor: "#f9f9f9",
@@ -352,7 +350,7 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 3,
   },
-  
+
   projectImage: {
     width: "100%",
     height: hp("20%"),
@@ -360,68 +358,67 @@ const styles = StyleSheet.create({
     marginBottom: hp("2%"),
     resizeMode: "contain",
   },
-  
+
   projectTitle: {
     fontSize: RFPercentage(2.4),
     fontWeight: "bold",
     marginBottom: hp("1%"),
   },
-  
+
   projectDescription: {
     fontSize: RFPercentage(2),
     color: "#666",
     marginBottom: hp("2%"),
   },
-  
+
   viewProfileButton: {
     backgroundColor: "#007bff",
     paddingVertical: hp("1%"),
     borderRadius: 8,
     alignItems: "center",
   },
-  
+
   viewProfileButtonText: {
     color: "#fff",
     fontSize: RFPercentage(2),
     fontWeight: "bold",
   },
-  
-  
+
   mm: {
     flexGrow: 1,
-    width: wp('100%'),
-    height: hp('32%'),
-    marginTop: hp('-5%'),
+    width: wp("100%"),
+    height: hp("32%"),
+    marginTop: hp("-5%"),
   },
   mmContent: {
-    width: wp('85%'), // Increased width for better utilization
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginHorizontal: wp('7.5%'), // Adjusted for better centering
-    marginVertical: hp('5%'),
+    width: wp("85%"), // Increased width for better utilization
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginHorizontal: wp("7.5%"), // Adjusted for better centering
+    marginVertical: hp("5%"),
   },
   textButtonContainer: {
     flex: 1,
-    height: '100%',
-    justifyContent: 'space-between', // Pushes text to top and button to bottom
-    paddingVertical: hp('1%'),
+    height: "100%",
+    justifyContent: "space-between", // Pushes text to top and button to bottom
+    paddingVertical: hp("1%"),
   },
   mmText: {
-    fontSize: hp('2%'), // Responsive font size
-    fontWeight: 'bold', // Added bold text
-    lineHeight: hp('2.7%'),
-    color: '#333',
+    fontSize: hp("2%"), // Responsive font size
+    fontWeight: "bold", // Added bold text
+    lineHeight: hp("2.7%"),
+    color: "#333",
   },
   customButton: {
     backgroundColor: "#007bff",
-    paddingVertical: hp('1.5%'),
+    paddingVertical: hp("1.5%"),
     borderRadius: 8,
-    width: wp('40%'), // Match image reference width
+    width: wp("40%"), // Match image reference width
     alignItems: "center",
-    marginTop: hp('2%'),
+    marginTop: hp("2%"),
     // Shadow for better visibility (iOS)
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
     shadowRadius: 3,
@@ -430,18 +427,17 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: "#fff",
-    fontSize: hp('1.8%'),
-    fontWeight: 'bold', // Bold text for button
-    textAlign: 'center',
+    fontSize: hp("1.8%"),
+    fontWeight: "bold", // Bold text for button
+    textAlign: "center",
   },
   mmImage: {
-    width: wp('30%'),
-    height: hp('25%'),
-    resizeMode: 'contain',
-    marginRight: wp('3%'),
-    borderRadius: hp('3%')
+    width: wp("30%"),
+    height: hp("25%"),
+    resizeMode: "contain",
+    marginRight: wp("3%"),
+    borderRadius: hp("3%"),
   },
-
 });
 
 export default HomeScreen;
