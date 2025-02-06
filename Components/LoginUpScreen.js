@@ -177,6 +177,13 @@ const styles = StyleSheet.create({
 
 export default LoginUpScreen;
 
+<<<<<<< HEAD
+=======
+
+
+
+
+>>>>>>> d510e6f (pending meet and error in help and terms)
 // import React, { useState } from "react";
 // import {
 //   View,
