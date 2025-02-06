@@ -76,10 +76,10 @@ const ProfileScreen = () => {
 };
 
 const menuItems = [
-  { label: 'Privacy and Security', icon: 'info-circle', screen: 'Privacy' },
-  { label: 'Help and Support', icon: 'question-circle', screen: 'Help' },
-  { label: 'Terms and Policies', icon: 'file-text', screen: "Terms" },
-  { label: 'Join our Team', icon: 'users', screen: "Join" },
+  { label: 'Privacy and Security', icon: 'info-circle',  },//screen: 'Privacy'
+  { label: 'Help and Support', icon: 'question-circle',  },//screen: 'Help'
+  { label: 'Terms and Policies', icon: 'file-text',  },//screen: "Terms"
+  { label: 'Join our Team', icon: 'users',  },//screen: "Join"
   { label: 'Logout', icon: 'sign-out' }
 ];
 
