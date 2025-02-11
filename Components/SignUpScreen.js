@@ -1,4 +1,131 @@
 
+// export default function SignUpScreen() {
+//   return (
+//     <KeyboardAvoidingView
+//       behavior={Platform.OS === "ios" ? "padding" : "height"}
+//       style={styles.container}
+//     >
+//       <ScrollView contentContainerStyle={styles.scrollContent}>
+//         <View style={styles.header}>
+//           <Text style={styles.headerTitle}>Sign Up</Text>
+//           <Text style={styles.headerSubtitle}>
+//             Join us today and turn your vision into reality.
+//           </Text>
+//         </View>
+
+//         <View style={styles.formContainer}>
+//           <Text style={{ fontWeight: "bold" }}>First Name</Text>
+//           <TextInput style={styles.input} placeholderTextColor="#888" />
+//           <Text style={{ fontWeight: "bold" }}>Last Name</Text>
+//           <TextInput style={styles.input} placeholderTextColor="#888" />
+//           <Text style={{ fontWeight: "bold" }}>Email</Text>
+//           <TextInput
+//             style={styles.input}
+//             placeholderTextColor="#888"
+//             keyboardType="email-address"
+//           />
+//           <Text style={{ fontWeight: "bold" }}>Password</Text>
+//           <TextInput
+//             style={styles.input}
+//             placeholderTextColor="#888"
+//             secureTextEntry={true}
+//           />
+//           <Text style={{ fontWeight: "bold" }}>Confirm Password</Text>
+//           <TextInput
+//             style={styles.input}
+//             placeholderTextColor="#888"
+//             secureTextEntry={true}
+//           />
+
+//           <TouchableOpacity style={styles.submitButton}>
+//             <Text style={styles.submitButtonText}>Submit</Text>
+//           </TouchableOpacity>
+
+//           <Text style={styles.footerText}>
+//             Already have an account?{" "}
+//             <Text
+//               style={styles.loginLink}
+//               onPress={() => alert("Login navigation here")}
+//             >
+//               login here
+//             </Text>
+//           </Text>
+//         </View>
+//       </ScrollView>
+//     </KeyboardAvoidingView>
+//   );
+// }
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+ 
+//     backgroundColor: "#ffffff",
+
+//   },
+//   scrollContent: {
+//     flexGrow: 1,
+//     justifyContent: "center",
+//   },
+//   header: {
+//     backgroundColor: "#4688F1",
+//     paddingVertical: 40,
+//     paddingHorizontal: 20,
+//     borderBottomLeftRadius: 40,
+//     borderBottomRightRadius: 40,
+//     alignItems: "center",
+//   },
+//   headerTitle: {
+//     fontSize: 24,
+//     fontWeight: "bold",
+//     color: "#FFFFFF",
+//   },
+//   headerSubtitle: {
+//     color: "#FFFFFF",
+//     marginTop: 8,
+//     textAlign: "center",
+//     fontSize: 14,
+//   },
+//   formContainer: {
+//     paddingHorizontal: 20,
+//     paddingTop: 20,
+//   },
+//   input: {
+//     backgroundColor: "#FFFFFF",
+//     borderColor: "#CCCCCC",
+//     borderWidth: 1,
+//     borderRadius: 8,
+//     padding: 10,
+//     marginVertical: 8,
+//     color: "#000",
+//   },
+
+//   submitButton: {
+//     backgroundColor: "#4688F1",
+//     paddingVertical: 12,
+//     borderRadius: 8,
+//     alignItems: "center",
+//     marginTop: 16,
+//   },
+//   submitButtonText: {
+   
+//     color: "#FFFFFF",
+//     fontWeight: "bold",
+//     fontSize: 16,
+//   },
+//   footerText: {
+//     marginTop: 20,
+//     textAlign: "center",
+//     color: "#333333",
+//     fontSize: 14,
+//   },
+//   loginLink: {
+//     color: "#3366FF",
+//     fontWeight: "bold",
+//   },
+// });
+
+
 import React,{useState} from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView, Dimensions } from 'react-native';
 import axios from 'axios';
