@@ -16,10 +16,11 @@ const CustomCheckbox = ({ isChecked, onPress }) => (
 );
 
 const feedbackType = {
-  product: false,
-  service: false,
-  website: false,
-  other: false
+  appPerformance: false, // Changed from "product" to "appPerformance"
+  featureRequest: false,
+  customerSupport: false,
+  usabilityDesign: false,
+  generalFeedback: false
 };
 
 export default function Feedback() {
@@ -52,7 +53,9 @@ export default function Feedback() {
             isChecked={feedback[type]}
             onPress={() => handleCheckboxChange(type)}
           />
-          <Text style={styles.checkboxLabel}>{type.charAt(0).toUpperCase() + type.slice(1)}</Text>
+          <Text style={styles.checkboxLabel}>
+  {type === 'appPerformance' ? 'App Performance' : type.charAt(0).toUpperCase() + type.slice(1)}
+</Text>
         </View>
       ))}
 

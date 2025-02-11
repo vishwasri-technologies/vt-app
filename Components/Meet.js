@@ -1,5 +1,11 @@
 // import React, { useState } from "react";
-// import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
+// import {
+//   View,
+//   Text,
+//   StyleSheet,
+//   ScrollView,
+//   TouchableOpacity,
+// } from "react-native";
 // import {
 //   widthPercentageToDP as wp,
 //   heightPercentageToDP as hp,
@@ -8,7 +14,7 @@
 // const teamMembers = [
 //   {
 //     id: "1",
-//     name:  "Manga Vishwasri",
+//     name: "Manga Vishwasri",
 //     role: "CEO & Founder",
 //     details:
 //       "Manga Vishwasri is the Founder and CEO of Vishwasri Technologies, leading the company with a vision for innovation and digital transformation. With a strong commitment to technology and business growth, she drives the development of cutting-edge solutions that empower businesses worldwide.",
@@ -19,7 +25,7 @@
 //     name: "Nallapu Swapna",
 //     role: "Director",
 //     details:
-//       "Nallapu Swapna is a visionary leader focusing on strategic planning and company growth. Her expertise in technology management ensures smooth project execution.",
+//       "Nallapu Swapna is the Director of Vishwasri Technologies, driving the company's growth, innovation, and strategic vision. With extensive experience in technology and business leadership, she plays a key role in operations, client relations, and digital transformation.",
 //     category: "Leadership",
 //   },
 //   {
@@ -27,7 +33,7 @@
 //     name: "Madathalapati Suman",
 //     role: "Director",
 //     details:
-//       "Madathalapati Suman plays a key role in business expansion and innovation. With a background in software architecture, he leads teams to success.",
+//       "Madathalapati Suman is the Director of Vishwasri Technologies, leading with a focus on innovation, strategy, and business excellence. He plays a key role in technology growth, operations, and client success, ensuring the delivery of high-quality digital solutions.",
 //     category: "Leadership",
 //   },
 //   {
@@ -35,7 +41,7 @@
 //     name: "Chandra Shekar",
 //     role: "Software Developer",
 //     details:
-//       "Chandra Shekar is a skilled software developer with expertise in full-stack development, focusing on creating scalable applications.",
+//       "Chandra Shekar is a Software Developer specializing in frontend development with expertise in React, Angular, and JavaScript frameworks. With a keen eye for UI/UX design, he focuses on responsive, and user-friendly web applications. His expertise in modern front-end technologies.",
 //     category: "Experts & Innovators",
 //   },
 //   {
@@ -43,7 +49,7 @@
 //     name: "Himabindu",
 //     role: "UI/UX Designer",
 //     details:
-//       "Himabindu specializes in designing intuitive and user-friendly interfaces, enhancing user experiences through innovative design strategies.",
+//       "Himabindu is a UI/UX Developer dedicated to crafting visually appealing and user-friendly interfaces. With experience in Figma and front-end frameworks, she ensures smooth and engaging user experiences.",
 //     category: "Experts & Innovators",
 //   },
 //   {
@@ -51,7 +57,7 @@
 //     name: "Sharvani",
 //     role: "Software Developer",
 //     details:
-//       "Sharvani is an expert in backend development, ensuring the performance and security of applications.",
+//       "Sharvani is a Software Developer specializing in Backend development with expertise in Node.js, Python, and database management. She focuses on building scalable, secure, and high-performance backend systems, ensuring seamless API integration and data processing.",
 //     category: "Experts & Innovators",
 //   },
 //   {
@@ -59,7 +65,7 @@
 //     name: "Akshaya",
 //     role: "Software Developer",
 //     details:
-//       "Akshaya is a talented software developer with expertise in mobile app development, creating seamless user experiences.",
+//       "Akshaya is a Software Developer specializing in Backend development with expertise in Java, Spring Boot, and SQL/NoSQL databases. She is passionate about server-side development, API optimization, and performance tuning to enhance application efficiency.",
 //     category: "Experts & Innovators",
 //   },
 //   {
@@ -67,7 +73,7 @@
 //     name: "Prashanthi",
 //     role: "Software Developer",
 //     details:
-//       "Prashanthi focuses on front-end development, delivering highly responsive and engaging user interfaces.",
+//       "Prashanthi is a Software Developer specializing in frontend development with expertise in React, Angular, and JavaScript. She focuses on building responsive, user-friendly, and visually appealing interfaces that enhance digital experiences. With expertise in UI/UX principles.",
 //     category: "Experts & Innovators",
 //   },
 //   {
@@ -75,7 +81,7 @@
 //     name: "Naveen",
 //     role: "Software Developer",
 //     details:
-//       "Naveen specializes in database management and backend systems, ensuring data security and scalability.",
+//       "Naveen is a Software Developer specializing in full-stack development with expertise in Java, React, and cloud technologies. He is passionate about building scalable and high-performance applications that enhance user experiences.",
 //     category: "Experts & Innovators",
 //   },
 //   {
@@ -83,12 +89,10 @@
 //     name: "Ashwith",
 //     role: "Software Developer",
 //     details:
-//       "Ashwith is passionate about cloud computing and DevOps, optimizing deployment and infrastructure automation.",
+//       "Ashwith is a Software Developer specializing in Frontend development with expertise in React, Angular, and JavaScript. He is passionate about crafting visually appealing, responsive, and user-friendly applications that enhance digital experiences. With a strong focus on UI/UX design and performance optimization.",
 //     category: "Experts & Innovators",
 //   },
 // ];
-
-
 
 // export default function Meet() {
 //   const [expandedId, setExpandedId] = useState(null);
@@ -101,16 +105,22 @@
 //     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
 //       <Text style={styles.heading}>Meet our Team</Text>
 //       <Text style={styles.subHeading}>
-//         Behind every successful project is a team of passionate problem-solvers, developers, and designers who believe in the power of technology.
+//         Behind every successful project is a team of passionate problem-solvers,
+//         developers, and designers who believe in the power of technology.
 //       </Text>
-//       <Text style={styles.sectionTitle}>The Future of Tech, Powered by People</Text>
+//       <Text style={styles.sectionTitle}>
+//         The Future of Tech, Powered by People
+//       </Text>
 
 //       <Text style={styles.categoryTitle}>Our Leadership</Text>
 //       {teamMembers
 //         .filter((member) => member.category === "Leadership")
 //         .map((member) => (
 //           <View key={member.id}>
-//             <TouchableOpacity style={styles.card} onPress={() => toggleExpand(member.id)}>
+//             <TouchableOpacity
+//               style={styles.card}
+//               onPress={() => toggleExpand(member.id)}
+//             >
 //               <Text style={styles.name}>{member.name}</Text>
 //               <Text style={styles.role}>{member.role}</Text>
 //             </TouchableOpacity>
@@ -127,7 +137,10 @@
 //         .filter((member) => member.category === "Experts & Innovators")
 //         .map((member) => (
 //           <View key={member.id}>
-//             <TouchableOpacity style={styles.card} onPress={() => toggleExpand(member.id)}>
+//             <TouchableOpacity
+//               style={styles.card}
+//               onPress={() => toggleExpand(member.id)}
+//             >
 //               <Text style={styles.name}>{member.name}</Text>
 //               <Text style={styles.role}>{member.role}</Text>
 //             </TouchableOpacity>
@@ -201,18 +214,13 @@
 //     color: "#333",
 //   },
 // });
-
-
-
 import { View, Text } from 'react-native'
 import React from 'react'
 
-const Meet = () => {
+export default function Meet() {
   return (
     <View>
       <Text>Meet</Text>
     </View>
   )
 }
-
-export default Meet

@@ -45,21 +45,21 @@ const projects = [
     id: "1",
     title: "EduNova",
     description:
-      "A complete education management system designed for institutions to manage courses, student records, fees.",
+      "A complete education management system designed for institutions to manage courses, student records, fees. It allows students to track their progress.",
     image: s6,
   },
   {
     id: "2",
-    title: "EternaJewels",
+    title: "SriLaxmiBhagavan",
     description:
-      "An elegant jewelry shopping platform offering a wide range of collections, personalized recommendations.",
+      "Developed a responsive e-commerce website with structured product categories and smooth navigation for an enhanced user experience.",
     image: s7,
   },
   {
     id: "3",
-    title: "TheraCare",
+    title: "TrustCare",
     description:
-      "A physiotherapy consultation app connecting patients with expert therapists, offering appointment booking.",
+      "Developed a hospital appointment booking website for TrustCare, enabling easy scheduling, real-time updates, and automated confirmations.",
     image: s8,
   },
 ];
@@ -192,7 +192,7 @@ const styles = StyleSheet.create({
   },
   header: {
     position: "absolute",
-    top: hp("5%"),
+    top: hp("2.5%"),
     left: wp("5%"),
     right: wp("5%"),
     flexDirection: "row",
