@@ -219,6 +219,13 @@ const styles = StyleSheet.create({
   },
 });
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> f535048 (Second)
 >>>>>>> 75e5302 (Second)
+=======
+>>>>>>> f535048 (Second)
+=======
+
+>>>>>>> 213670b (changes in forgot screen)
+>>>>>>> 534bdd3 (changes in forgot screen)

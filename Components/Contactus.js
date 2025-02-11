@@ -140,9 +140,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-
 import Icon from 'react-native-vector-icons/MaterialIcons';
-
 export default function ContactUs() {
   const location = {
     latitude: 17.4441147,
@@ -249,5 +247,12 @@ const styles = StyleSheet.create({
     marginTop: hp('2%'),
   },
 });
+<<<<<<< HEAD
 >>>>>>> f535048 (Second)
+<<<<<<< HEAD
 >>>>>>> 75e5302 (Second)
+=======
+=======
+
+>>>>>>> 213670b (changes in forgot screen)
+>>>>>>> 534bdd3 (changes in forgot screen)

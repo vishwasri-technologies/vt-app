@@ -17,14 +17,19 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     "@react-native-community/checkbox": "^0.5.17",
 =======
 
 >>>>>>> 75e5302 (Second)
 =======
+=======
+>>>>>>> 534bdd3 (changes in forgot screen)
 
 =======
 <<<<<<< HEAD
+=======
+>>>>>>> 213670b (changes in forgot screen)
     "@react-native-community/checkbox": "^0.5.17",
 >>>>>>> 02e53b7 (Modified)
 >>>>>>> 146a60f (Modified)
@@ -33,6 +38,7 @@
     "@react-navigation/native": "^7.0.14",
     "@react-navigation/stack": "^7.1.1",
     "axios": "^1.7.9",
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -59,6 +65,8 @@
 
 >>>>>>> 75e5302 (Second)
 =======
+=======
+>>>>>>> 534bdd3 (changes in forgot screen)
 
 =======
 =======
@@ -68,7 +76,12 @@
     "@react-navigation/stack": "^7.1.1",
 >>>>>>> 575727c (first commit)
 >>>>>>> 02e53b7 (Modified)
+<<<<<<< HEAD
 >>>>>>> 146a60f (Modified)
+=======
+=======
+>>>>>>> 213670b (changes in forgot screen)
+>>>>>>> 534bdd3 (changes in forgot screen)
     "expo": "~52.0.25",
     "expo-status-bar": "~2.0.1",
     "formik": "^2.4.6",
@@ -84,6 +97,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     "react-native-maps": "^1.20.1",
 =======
 >>>>>>> 575727c (first commit)
@@ -95,6 +109,9 @@
 =======
 >>>>>>> 575727c (first commit)
 >>>>>>> 146a60f (Modified)
+=======
+    "react-native-maps": "^1.20.1",
+>>>>>>> 534bdd3 (changes in forgot screen)
     "react-native-paper": "^5.13.1",
     "react-native-reanimated": "^3.16.7",
     "react-native-responsive-dimensions": "^3.1.1",
@@ -107,6 +124,7 @@
     "yup": "^1.6.1"
   },
   "devDependencies": {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -124,6 +142,10 @@
 >>>>>>> 75e5302 (Second)
 =======
 >>>>>>> 146a60f (Modified)
+=======
+    "@babel/core": "^7.20.0",
+    "@react-native-community/cli": "latest"
+>>>>>>> 534bdd3 (changes in forgot screen)
   },
   "private": true
 }

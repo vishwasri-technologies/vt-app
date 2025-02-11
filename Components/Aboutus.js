@@ -9,19 +9,29 @@ import office1 from "../Images/office1.png";
 import office2 from "../Images/office2.png";
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 import BottomScreen from "../navigation/BottomScreen";
 >>>>>>> ca07a65 (Aboutus)
 =======
+=======
+>>>>>>> 534bdd3 (changes in forgot screen)
 import BottomScreen from "../navigation/BottomScreen";
 =======
 
 >>>>>>> f535048 (Second)
+<<<<<<< HEAD
 >>>>>>> 75e5302 (Second)
+=======
+=======
+import BottomScreen from "../navigation/BottomScreen";
+>>>>>>> 213670b (changes in forgot screen)
+>>>>>>> 534bdd3 (changes in forgot screen)
 
 export default function Aboutus() {
   return (
+    
     <ScrollView style={styles.container}>
      
       <Text style={styles.heading}>About Us</Text>
@@ -91,16 +101,25 @@ export default function Aboutus() {
       <View>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     
 =======
         <BottomScreen />
 >>>>>>> ca07a65 (Aboutus)
 =======
+=======
+>>>>>>> 534bdd3 (changes in forgot screen)
         <BottomScreen />
 =======
     
 >>>>>>> f535048 (Second)
+<<<<<<< HEAD
 >>>>>>> 75e5302 (Second)
+=======
+=======
+        <BottomScreen />
+>>>>>>> 213670b (changes in forgot screen)
+>>>>>>> 534bdd3 (changes in forgot screen)
       </View>
     </ScrollView>
   );

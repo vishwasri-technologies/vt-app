@@ -177,6 +177,7 @@ const styles = StyleSheet.create({
 
 export default LoginUpScreen;
 
+
 // import React, { useState } from "react";
 // import {
 //   View,
@@ -349,4 +350,3 @@ export default LoginUpScreen;
 // });
 
 // export default LoginUpScreen;
-
