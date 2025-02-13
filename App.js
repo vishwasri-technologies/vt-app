@@ -25,6 +25,7 @@ import Privacy from "./Components/Privacy";
 import Help from "./Components/Help";
 import Terms from "./Components/Terms";
 import Join from "./Components/Join";
+
 import Web from "./Components/Web";
 import Newapp from "./Components/Newapp";
 import Graphic from "./Components/Graphic";
@@ -32,6 +33,10 @@ import Digital from "./Components/Digital";
 import ServicesScreen from "./Components/ServicesScreen";
 import ContactUs from './Components/Contactus';
 import PortfolioScreen from "./Components/PortfolioScreen";
+
+// import HomeScreen from "./Components/HomeScreen";
+
+
 
 const Stack = createStackNavigator();
 export default function App() {

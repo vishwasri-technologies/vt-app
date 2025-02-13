@@ -14,7 +14,9 @@ import {
 } from "react-native-responsive-dimensions";
 
 const ForgotScreen = ({ navigation }) => {
+
   const [email, setEmail] = useState("");
+
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
@@ -48,6 +50,31 @@ const ForgotScreen = ({ navigation }) => {
       Alert.alert("Error", "Server error. Please try again.");
     }
   };
+
+
+
+
+    // <View style={styles.container}>
+    //   <View style={styles.header}>
+    //     <Text style={styles.headerText}>Create new password</Text>
+    //     <Text style={styles.subHeader}>Keep it simple.keep it safe.</Text>
+    //   </View>
+
+    //   <View style={styles.formContainer}>
+    //     <Text style={styles.label}>New Password</Text>
+    //     <TextInput
+    //       style={styles.input}
+    //       placeholder="New Password"
+    //       placeholderTextColor="#999"
+    //     />
+
+    //     <Text style={styles.label}> ConfirmPassword</Text>
+    //     <TextInput
+    //       style={styles.input}
+    //       placeholder="ConfirmPassword"
+    //       placeholderTextColor="#999"
+    //       secureTextEntry
+    //     />
 
   return (
     <View style={styles.container}>
