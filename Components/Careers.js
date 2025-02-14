@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 import React from 'react';
 import { View, Text,textAlign, Alert,StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
@@ -62,6 +63,8 @@ export default function Careers() {
   )
 }
 =======
+=======
+>>>>>>> edb943d (done notifications)
 import React from 'react';
 import { View, Text,textAlign, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import {
@@ -217,6 +220,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
 
   },
+<<<<<<< HEAD
 });
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -229,3 +233,6 @@ const styles = StyleSheet.create({
 
 >>>>>>> 213670b (changes in forgot screen)
 >>>>>>> 534bdd3 (changes in forgot screen)
+=======
+});
+>>>>>>> edb943d (done notifications)

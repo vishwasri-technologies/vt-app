@@ -7,6 +7,7 @@ import App from './App';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import 'react-native-gesture-handler';
 =======
 
@@ -47,6 +48,9 @@ import 'react-native-gesture-handler';
 import 'react-native-gesture-handler';
 >>>>>>> 213670b (changes in forgot screen)
 >>>>>>> 534bdd3 (changes in forgot screen)
+=======
+import 'react-native-gesture-handler';
+>>>>>>> edb943d (done notifications)
 // registerRootComponent calls AppRegistry.registerComponent('main', () => App);
 // It also ensures that whether you load the app in Expo Go or in a native build,
 // the environment is set up appropriately

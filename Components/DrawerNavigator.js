@@ -1,11 +1,15 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import BottomScreen from "../navigation/BottomScreen"; 
 =======
 =======
 >>>>>>> 75e5302 (Second)
+=======
+
+>>>>>>> edb943d (done notifications)
 // // DrawerNavigator.js (corrected)
 // import React from "react";
 // import { createDrawerNavigator } from "@react-navigation/drawer";

@@ -10,6 +10,7 @@ import office2 from "../Images/office2.png";
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 import BottomScreen from "../navigation/BottomScreen";
@@ -28,10 +29,14 @@ import BottomScreen from "../navigation/BottomScreen";
 import BottomScreen from "../navigation/BottomScreen";
 >>>>>>> 213670b (changes in forgot screen)
 >>>>>>> 534bdd3 (changes in forgot screen)
+=======
+
+import BottomScreen from "../navigation/BottomScreen";
+
+>>>>>>> edb943d (done notifications)
 
 export default function Aboutus() {
   return (
-    
     <ScrollView style={styles.container}>
      
       <Text style={styles.heading}>About Us</Text>
@@ -102,6 +107,7 @@ export default function Aboutus() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     
 =======
         <BottomScreen />
@@ -120,6 +126,9 @@ export default function Aboutus() {
         <BottomScreen />
 >>>>>>> 213670b (changes in forgot screen)
 >>>>>>> 534bdd3 (changes in forgot screen)
+=======
+
+>>>>>>> edb943d (done notifications)
       </View>
     </ScrollView>
   );

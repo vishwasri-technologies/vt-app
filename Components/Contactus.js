@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { View, Text, StyleSheet, Linking, TouchableOpacity } from 'react-native';
 import React from 'react';
 import MapView, { Marker } from 'react-native-maps';
@@ -133,6 +134,8 @@ export default function Contactus() {
 >>>>>>> ca07a65 (Aboutus)
 =======
 =======
+=======
+>>>>>>> edb943d (done notifications)
 import { View, Text, StyleSheet, Linking, TouchableOpacity } from 'react-native';
 import React from 'react';
 import MapView, { Marker } from 'react-native-maps';
@@ -140,7 +143,9 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+
 import Icon from 'react-native-vector-icons/MaterialIcons';
+
 export default function ContactUs() {
   const location = {
     latitude: 17.4441147,
@@ -246,6 +251,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginTop: hp('2%'),
   },
+<<<<<<< HEAD
 });
 <<<<<<< HEAD
 >>>>>>> f535048 (Second)
@@ -256,3 +262,6 @@ const styles = StyleSheet.create({
 
 >>>>>>> 213670b (changes in forgot screen)
 >>>>>>> 534bdd3 (changes in forgot screen)
+=======
+});
+>>>>>>> edb943d (done notifications)
