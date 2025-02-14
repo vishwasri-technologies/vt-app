@@ -21,6 +21,12 @@ const ForgotScreen = ({ navigation }) => {
       </View>
 
       <View style={styles.formContainer}>
+      <Text style={styles.label}>Email</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Email"
+          placeholderTextColor="#999"
+        />
         <Text style={styles.label}>New Password</Text>
         <TextInput
           style={styles.input}

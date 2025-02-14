@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text,textAlign, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text,textAlign, Alert,StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -70,7 +70,7 @@ export default function Careers() {
           </View>
           <Text style={styles.jobSkills}>{job.skills}</Text>
           <TouchableOpacity style={styles.applyButton}>
-            <Text style={styles.applyButtonText} onPress={() => alert('No applications')}>Apply now</Text>
+            <Text style={styles.applyButtonText} onPress={() => Alert.alert('Jobs','No Vacancy')}>Apply now</Text>
           </TouchableOpacity>
         </View>
       ))}
