@@ -11,8 +11,7 @@ const ProfileScreen = () => {
 
   const handleLogout = () => {
     setLogoutModalVisible(false);
-
-    console.log("User logged out");
+    navigation.navigate('LoginUpScreen');
   };
 
   return (
