@@ -28,7 +28,7 @@ import s3 from "../Images/s3.png";
 import s4 from "../Images/s4.png";
 import s5 from "../Images/group.png";
 import s6 from "../Images/student1.png";
-import s7 from "../Images/student2.png";
+import jt from "../Images/jt.png";
 import s8 from "../Images/student3.png";
 import s9 from "../Images/mobile.png";
 import DrawerNavigator from "./DrawerNavigator";
@@ -53,7 +53,7 @@ const projects = [
     title: "SriLaxmiBhagavan",
     description:
       "Developed a responsive e-commerce website with structured product categories and smooth navigation for an enhanced user experience.",
-    image: s7,
+    image: jt,
   },
   {
     id: "3",

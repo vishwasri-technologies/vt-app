@@ -43,7 +43,7 @@ const teamMembers = [
   },
   {
     id: "4",
-    name: "Chandra Shekar",
+    name: "Chandra Shekar Racha",
     role: "Software Developer",
     details:
       <Text>Chandra Shekar is a <Text style={{fontWeight: 'bold'}}> Software Developer</Text> specializing in frontend development with expertise in React, Angular, and JavaScript frameworks. With a keen eye for UI/UX design, he focuses on responsive, and user-friendly web applications. His expertise in modern front-end technologies.</Text>,
@@ -51,7 +51,7 @@ const teamMembers = [
   },
   {
     id: "5",
-    name: "Himabindu",
+    name: "Himabindu Vadla",
     role: "UI/UX Designer",
     details:
       <Text>Himabindu is a <Text style={{fontWeight: 'bold'}}> UI/UX Designer</Text> dedicated to crafting visually appealing and user-friendly interfaces. With experience in Figma and front-end frameworks, she ensures smooth and engaging user experiences.</Text>,
@@ -59,7 +59,7 @@ const teamMembers = [
   },
   {
     id: "6",
-    name: "Sharvani",
+    name: "Sharvani Gadamalla",
     role: "Software Developer",
     details:
       <Text>"Sharvani is a <Text style={{fontWeight: 'bold'}}> Software Developer</Text>  specializing in Backend development with expertise in Node.js, Python, and database management. She focuses on building scalable, secure, and high-performance backend systems, ensuring seamless API integration and data processing."</Text>,
@@ -67,7 +67,7 @@ const teamMembers = [
   },
   {
     id: "7",
-    name: "Akshaya",
+    name: "Akshaya Bonala",
     role: "Software Developer",
     details:
       <Text>Akshaya is a <Text style={{fontWeight: 'bold'}}> Software Developer</Text> specializing in Backend development with expertise in Java, Spring Boot, and SQL/NoSQL databases. She is passionate about server-side development, API optimization, and performance tuning to enhance application efficiency.</Text>,
@@ -75,7 +75,7 @@ const teamMembers = [
   },
   {
     id: "8",
-    name: "Prashanthi",
+    name: "Prashanthi Nallapu",
     role: "Software Developer",
     details:
       <Text>Prashanthi is a <Text style={{fontWeight: 'bold'}}> Software Developer</Text> specializing in frontend development with expertise in React, Angular, and JavaScript. She focuses on building responsive, user-friendly, and visually appealing interfaces that enhance digital experiences. With expertise in UI/UX principles.</Text>,
@@ -83,7 +83,7 @@ const teamMembers = [
   },
   {
     id: "9",
-    name: "Naveen",
+    name: "Naveen Chinthala",
     role: "Software Developer",
     details:
       <Text>Naveen is a <Text style={{fontWeight: 'bold'}}> Software Developer</Text> specializing in full-stack development with expertise in Java, React, and cloud technologies. He is passionate about building scalable and high-performance applications that enhance user experiences.</Text>,
@@ -91,7 +91,7 @@ const teamMembers = [
   },
   {
     id: "10",
-    name: "Ashwith",
+    name: "Ashwith Madhurakavi",
     role: "Software Developer",
     details:
       <Text>Ashwith is a <Text style={{fontWeight: 'bold'}}> Software Developer</Text> specializing in Frontend development with expertise in React, Angular, and JavaScript. He is passionate about crafting visually appealing, responsive, and user-friendly applications that enhance digital experiences. With a strong focus on UI/UX design and performance optimization.</Text>,
