@@ -5,54 +5,62 @@ import {
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 import { ScrollView } from "react-native-gesture-handler";
-import vtweb from "../Images/vtweb.png";
-import hospital from "../Images/h1.png";
+// import vtweb from "../Images/vtweb.png";
+// import hospital from "../Images/h1.png";
+// import education from "../Images/education.png";
+// import jewellery from "../Images/jewellery.png";
+import workflow from "./workflowData";
 
-const workflow = [
-  {
-    id: 1,
-    Project: "Vishwasri Technologies",
-    Industry: "Information Technology(IT)",
-    Image: vtweb,
-    Description:
-      "Developed a professional website for Vishwasri Technologies to showcase its software development services. The platform highlights the company’s expertise, providing clear and concise information about the services offered, with a clean and responsive design for an optimal user experience.",
-    Technologies: "React.js, Node.js, Express.js, MongoDB,AWS",
-  },
-  {
-    id: 2,
-    Project: "TrustCare",
-    Industry: "Heathcare",
-    Image: hospital,
-    Description:
-      "Developed a seamless and user-friendly hospital appointment booking website for TrustCare. The platform allows patients to schedule appointments with doctors, view available slots, and receive automated confirmations. The website features a responsive design, real-time booking updates, and ensuring a smooth and efficient healthcare experience.",
-    Technologies: "React.js, Node.js, Express.js, MongoDB,AWS",
-  },
+import { Link } from "@react-navigation/native";
+// const workflow = [
+//   {
+//     id: 1,
+//     Project: "Vishwasri Technologies",
+//     Industry: "Information Technology(IT)",
+//     Image: vtweb,
+//     Description:
+//       "Developed a professional website for Vishwasri Technologies to showcase its software development services. The platform highlights the company’s expertise, providing clear and concise information about the services offered, with a clean and responsive design for an optimal user experience.",
+//     Technologies: "React.js, Node.js, Express.js, MongoDB,AWS",
+//     Link:"https://vishcom.net/"
+//   },
+//   {
+//     id: 2,
+//     Project: "TrustCare",
+//     Industry: "Heathcare",
+//     Image: hospital,
+//     Description:
+//       "Developed a seamless and user-friendly hospital appointment booking website for TrustCare. The platform allows patients to schedule appointments with doctors, view available slots, and receive automated confirmations. The website features a responsive design, real-time booking updates, and ensuring a smooth and efficient healthcare experience.",
+//     Technologies: "React.js, Node.js, Express.js, MongoDB,AWS",
+//     Link:"https://main.d2ye622qrxqigu.amplifyapp.com/"
+//   },
 
-  // {
-  //   id: 3,
-  //   Project: "SriLaxmiBhagavan",
-  //   Industry: "E-commerce",
-  //   Image: require("./Images/srilaxmibhagavan.png"),
-  //   Description:
-  //     "Developed a responsive e-commerce website with structured product categories, detailed descriptions, and smooth navigation for an enhanced user experience.Developed a responsive e-commerce website with structured product categories, detailed descriptions, and smooth navigation for an enhanced user experienceanced user experience.",
-  //   Technologies: "React.js, Node.js, Express.js, MongoDB,AWS",
-  // },
-  // {
-  //   id: 4,
-  //   Project: "EduNova University",
-  //   Industry: "Education",
-  //   Image: require("./Images/trustcare.png"),
-  //   Description:
-  //     "Developed a static university website for Edunova, providing essential information about courses, faculty, admissions, and campus facilities. The website features a structured layout, responsive design, and user-friendly navigation, ensuring accessibility for students, faculty, and prospective applicants.",
-  //   Technologies: "React.js, Node.js, Express.js, MongoDB,AWS",
-  // },
-];
+//   {
+//     id: 3,
+//     Project: "SriLaxmiBhagavan",
+//     Industry: "E-commerce",
+//     Image: jewellery,
+//     Description:
+//       "Developed a responsive e-commerce website with structured product categories, detailed descriptions, and smooth navigation for an enhanced user experience.Developed a responsive e-commerce website with structured product categories, detailed descriptions, and smooth navigation for an enhanced user experienceanced user experience.",
+//     Technologies: "React.js, Node.js, Express.js, MongoDB,AWS",
+//     Link:"https://srilaxmibhagavan.vishcom.net/"
+//   },
+//   {
+//     id: 4,
+//     Project: "EduNova University",
+//     Industry: "Education",
+//     Image: education,
+//     Description:
+//       "Developed a static university website for Edunova, providing essential information about courses, faculty, admissions, and campus facilities. The website features a structured layout, responsive design, and user-friendly navigation, ensuring accessibility for students, faculty, and prospective applicants.",
+//     Technologies: "React.js, Node.js, Express.js, MongoDB,AWS",
+//     Link:"https://main.d7nvfk98hzreb.amplifyapp.com/"
+//   },
+// ];
 export default function PortfolioScreen() {
   return (
     <ScrollView style={styles.box}>
       <View>
         <Text style={styles.box1}>Our Portfolio</Text>
-        <Text>
+        <Text style={styles.box2}>
           Explore the innovative projects we've delivered across industries.
         </Text>
       </View>
@@ -66,9 +74,8 @@ export default function PortfolioScreen() {
           <Text style={styles.description}>{project.Description}</Text>
           <Text style={styles.techTitle}>Technologies Used:</Text>
           <Text style={styles.technologies}>{project.Technologies}</Text>
-          <TouchableOpacity style={styles.button}>
-            <Text onPress={()=> Linking.openURL("https://vishcom.net/")}
-            style={styles.buttonText}>View Project</Text>
+          <TouchableOpacity style={styles.button} onPress={() => Linking.openURL(project.Link)}>
+            <Text style={styles.buttonText}>View Project </Text>
           </TouchableOpacity>
         </View>
       ))}
@@ -91,8 +98,9 @@ const styles = StyleSheet.create({
     textAlign: "left",
   },
   box2: {
-   margin: wp("6%"), 
-  }, container: {
+ fontSize: wp("3.8%"),
+  },
+   container: {
     flex: 1,
     padding: wp("5%"),
     backgroundColor: "#f8f9fa",
