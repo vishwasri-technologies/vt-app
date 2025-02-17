@@ -351,16 +351,4 @@ export default LoginUpScreen;
 // });
 
 // export default LoginUpScreen;
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
-=======
->>>>>>> 575727c (first commit)
-=======
->>>>>>> ca07a65 (Aboutus)
-=======
->>>>>>> c4981e3 (commit)
-=======
->>>>>>> edb943d (done notifications)
->>>>>>> 3d09c75 (done notifications)
