@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { View, Text, StyleSheet,Image,TouchableOpacity,Linking} from "react-native";
 import React from "react";
 import {
@@ -138,3 +139,15 @@ const styles = StyleSheet.create({
 });
 
 
+=======
+import { View, Text } from 'react-native'
+import React from 'react'
+
+export default function PortfolioScreen() {
+  return (
+    <View>
+      <Text>PortfolioScreen</Text>
+    </View>
+  )
+}
+>>>>>>> 575727c (first commit)

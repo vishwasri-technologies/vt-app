@@ -1,10 +1,12 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import HomeScreen from "./Components/HomeScreen";
 import WelcomeScreen from "./Components/WelcomeScreen";
 import SignUpScreen from "./Components/SignUpScreen";
 import LoginUpScreen from "./Components/LoginUpScreen";
 import OnboardingScreen from "./Components/OnboardingScreen";
 import ForgotScreen from "./Components/ForgotScreen";
+
 import BottomScreen from "./navigation/BottomScreen";
 import EditProfileScreen from "./Components/EditProfileScreen";
 import DrawerNavigator from "./Components/DrawerNavigator";
@@ -24,6 +26,7 @@ const Stack = createStackNavigator();
 export default function App() {
   return (
     <>
+
       <NavigationContainer>
         <Stack.Navigator
           initialRouteName="OnboardingScreen"
@@ -35,6 +38,7 @@ export default function App() {
           <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} />
           <Stack.Screen name="ForgotScreen" component={ForgotScreen} />
           <Stack.Screen name="BottomScreen" component={BottomScreen} />
+          <Stack.Screen name="HomeScreen" component={HomeScreen} />
           <Stack.Screen
             name="EditProfileScreen"
             component={EditProfileScreen}
@@ -56,3 +60,4 @@ export default function App() {
     </>
   );
 }
+

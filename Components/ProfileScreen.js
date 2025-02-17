@@ -1,17 +1,65 @@
-import React, { useState } from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet, Modal } from 'react-native';
+
+import React, { useState, useEffect } from 'react';
+import { View, Text, Image, TouchableOpacity, StyleSheet, ActivityIndicator,  Modal } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { widthPercentageToDP as wp, heightPercentageToDP as hp } from "react-native-responsive-screen";
-import p1 from '../Images/p1.png';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp
+} from "react-native-responsive-screen";
+import p1 from'../Images/p1.png';
+import { Alert } from 'react-native'; 
+// import LoginUpScreen from './LoginUpScreen';
 const ProfileScreen = () => {
   const navigation = useNavigation();
-  const [logoutModalVisible, setLogoutModalVisible] = useState(false);
+  const [userData, setUserData] = useState(null); // To store fetched user data
+  const [loading, setLoading] = useState(true); // To track loading state
+  const [error, setError] = useState(null); // To store error messages if any
+  const [logoutModalVisible, setLogoutModalVisible] = useState(false); // Add this line to manage the modal visibility
 
-  const handleLogout = () => {
-    setLogoutModalVisible(false);
-    navigation.navigate('LoginUpScreen');
+
+  // Fetch user data from the backend API when the component mounts
+  useEffect(() => {
+
+      
+
+    const fetchUserProfile = async () => {
+      try {
+        const response = await fetch("http://192.168.29.167:5000/api/ProfileScreen");
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || "Failed to fetch profile");
+        }
+
+        setUserData(data); // Set user data to state
+      } catch (err) {
+        setError(err.message);
+        Alert.alert("Error", err.message); // Show an alert in case of an error
+      } finally {
+        setLoading(false); // Stop loading indicator
+      }
+    };
+
+    fetchUserProfile();
+  }, []); // The empty array ensures this effect only runs once when the component mounts
+
+  
+  const handleLogout = async () => {
+    try {
+      console.log("Logging out...");
+      // Clear user session (e.g., token or any user-related data stored in AsyncStorage)
+      await AsyncStorage.removeItem('userToken');
+      console.log("User session removed");
+      Alert.alert("Logged out", "You have been logged out successfully.");
+      
+      // Navigate to login screen after logout
+      navigation.navigate('LoginUpScreen');
+    } catch (error) {
+      console.log("Error during logout:", error);
+      Alert.alert("Error", "An error occurred during logout.");
+    }
   };
 
   return (
@@ -22,29 +70,36 @@ const ProfileScreen = () => {
         </TouchableOpacity>
         <Text style={styles.header}>Profile</Text>
       </View>
-
       <View style={styles.profileSection}>
         <View style={styles.profileImageWrapper}>
-          <Image source={p1} style={styles.profileImage} />
+          <Image 
+            source={p1}
+            style={styles.profileImage} 
+          />
         </View>
-        <Text style={styles.userName}>User Name</Text>
+        {loading ? (
+          <ActivityIndicator size="large" color="#007BFF" /> // Loading indicator
+        ) : error ? (
+          <Text style={styles.errorText}>{error}</Text> // Show error if any
+        ) : (
+          <Text style={styles.userName}> {userData.name}</Text> // Display user name
+        )}
+        {/* <Text style={styles.userName}>User Name</Text> */}
         <TouchableOpacity style={styles.editProfileButton} onPress={() => navigation.navigate('EditProfileScreen')}>
           <Text style={styles.editProfileText}>Edit Profile</Text>
         </TouchableOpacity>
       </View>
-
       <View style={styles.menuSection}>
         {menuItems.map((item, index) => (
-          <TouchableOpacity 
-            key={index} 
-            style={styles.menuItem} 
-            onPress={() => {
-              if (item.label === "Logout") {
-                setLogoutModalVisible(true);
-              } else {
-                navigation.navigate(item.screen);
-              }
-            }}>
+          <TouchableOpacity key={index} style={styles.menuItem}
+          onPress={() => {
+            if (item.label === "Logout") {
+              console.log("Logout clicked");
+              setLogoutModalVisible(true);
+            } else {
+              navigation.navigate(item.screen);
+            }
+          }}>
             <Icon name={item.icon} size={wp('5%')} color="black" style={styles.icon} />
             <Text style={styles.menuText}>{item.label}</Text>
             <Icon name="angle-right" size={wp('6%')} color="black" style={styles.arrowIcon} />
@@ -52,12 +107,14 @@ const ProfileScreen = () => {
         ))}
       </View>
 
-    
       <Modal
         transparent={true}
         animationType="fade"
         visible={logoutModalVisible}
-        onRequestClose={() => setLogoutModalVisible(false)}>
+        onRequestClose={() =>{
+          console.log("Modal closed");
+        setLogoutModalVisible(false)}}>
+
         <View style={styles.modalOverlay}>
           <View style={styles.modalContainer}>
             <Text style={styles.modalText}>Are you sure you want to log out?</Text>
@@ -70,15 +127,16 @@ const ProfileScreen = () => {
           </View>
         </View>
       </Modal>
+
     </View>
   );
 };
 
 const menuItems = [
-  { label: 'Privacy and Security', icon: 'info-circle', screen: 'Privacy' },//
-  { label: 'Help and Support', icon: 'question-circle', screen: 'Help' },//
-  { label: 'Terms and Policies', icon: 'file-text',screen: "Terms"  },//
-  { label: 'Join our Team', icon: 'users',screen: "Join"  },//
+  { label: 'Privacy and Security', icon: 'info-circle' },
+  { label: 'Help and Support', icon: 'question-circle' },
+  { label: 'Terms and Policies', icon: 'file-text' },
+  { label: 'Join our Team', icon: 'users' },
   { label: 'Logout', icon: 'sign-out' }
 ];
 
@@ -196,3 +254,7 @@ const styles = StyleSheet.create({
 });
 
 export default ProfileScreen;
+
+
+
+

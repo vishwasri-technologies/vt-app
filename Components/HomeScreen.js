@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   Text,
-  Button,
   View,
   ScrollView,
   Image,
@@ -11,185 +10,286 @@ import {
   FlatList,
 } from "react-native";
 import { useNavigation, DrawerActions } from "@react-navigation/native";
-import { useEffect } from "react";
 import { Ionicons } from "@expo/vector-icons";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import image1 from "../Images/image1.png";
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from "react-native-responsive-screen";
-import { createDrawerNavigator } from "@react-navigation/drawer";
-
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from "react-native-responsive-screen";
 import { RFPercentage } from "react-native-responsive-fontsize";
+import axios from "axios";
+
 import s1 from "../Images/s1.png";
 import s2 from "../Images/s2.png";
 import s3 from "../Images/s3.png";
 import s4 from "../Images/s4.png";
 import s5 from "../Images/group.png";
 import s6 from "../Images/student1.png";
-import jt from "../Images/jt.png";
+import s7 from "../Images/student2.png";
 import s8 from "../Images/student3.png";
 import s9 from "../Images/mobile.png";
-
-import portfolio from "./PortfolioScreen";
 
 const services = [
   { id: "1", title: "Web Development", image: s4 },
   { id: "2", title: "App Development", image: s2 },
-  { id: "3", title: "Graphic Design", image: s1 },
-  { id: "4", title: "Marketing", image: s3 },
-
+  { id: "3", title: "Marketing", image: s3 },
+  { id: "4", title: "Graphic Design", image: s1 },
 ];
 
 const projects = [
   {
     id: "1",
     title: "EduNova",
-    description:
-      "A complete education management system designed for institutions to manage courses, student records, fees. It allows students to track their progress.",
+    description: "A complete education management system designed for institutions to manage courses, student records, fees.",
     image: s6,
-    link:portfolio
-    
   },
   {
     id: "2",
-    title: "SriLaxmiBhagavan",
-    description:
-      "Developed a responsive e-commerce website with structured product categories and smooth navigation for an enhanced user experience.",
-    image: jt,
-    link:portfolio
+    title: "EternaJewels",
+    description: "An elegant jewelry shopping platform offering a wide range of collections, personalized recommendations.",
+    image: s7,
   },
   {
     id: "3",
-    title: "TrustCare",
-    description:
-      "Developed a hospital appointment booking website for TrustCare, enabling easy scheduling, real-time updates, and automated confirmations.",
+    title: "TheraCare",
+    description: "A physiotherapy consultation app connecting patients with expert therapists, offering appointment booking.",
     image: s8,
-    link:portfolio
   },
 ];
-const openDrawer = createDrawerNavigator();
+
 const HomeScreen = () => {
   const navigation = useNavigation();
+  const [searchText, setSearchText] = useState(""); 
+  const [filteredServices, setFilteredServices] = useState([]);
+  const [filteredProjects, setFilteredProjects] = useState([]);
+
+  const [notificationCount, setNotificationCount] = useState(0);
+  // 📌 Function to Fetch Notifications
+  const fetchNotifications = async () => {
+    try {
+      const response = await axios.get("http://192.168.29.167:5000/Notifications");
+      const unreadNotifications = response.data.filter((notif) => !notif.read);
+      console.log("Unread Notifications Count:", unreadNotifications.length);
+      setNotificationCount(unreadNotifications.length);
+    } catch (error) {
+      console.error("Error fetching notifications:", error);
+    }
+  };
+
+  // 📌 Fetch Notifications Every 10 Seconds
+  useEffect(() => {
+    
+    fetchNotifications();
+  
+  }, []);
+
+  // 📌 Handle Click (Show Alert & Reset Count)
+  const handlePress = () => {
+    alert("Notifications clicked!");
+    axios
+      .post("http://192.168.29.167:5000/Notifications/mark-read")
+      .then(() => {
+        console.log("All notifications marked as read"); // ✅ Debugging
+        setNotificationCount(0); // ✅ Clear count on click
+        navigation.navigate("Notifications");
+      })
+      .catch((error) => console.error("Error marking notifications as read:", error));
+  };
+
+  useEffect(() => {
+    if (searchText.trim() === "") {
+      setFilteredServices([]);
+      setFilteredProjects([]);
+    } else {
+      const filteredServicesList = services.filter(service =>
+        service.title.toLowerCase().includes(searchText.toLowerCase())
+      );
+
+      const filteredProjectsList = projects.filter(project =>
+        project.title.toLowerCase().includes(searchText.toLowerCase())
+      );
+
+      setFilteredServices(filteredServicesList);
+      setFilteredProjects(filteredProjectsList);
+    }
+  }, [searchText]);
+
+  
 
   useEffect(() => {
     navigation.navigate("DrawerNavigator");
   }, [navigation]);
 
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.header}>
-        <TouchableOpacity
-          onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}
-        >
+        <TouchableOpacity onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}>
           <Ionicons name="menu" size={30} color="white" />
         </TouchableOpacity>
-
-        <TouchableOpacity onPress={() => alert("Notifications clicked!")}>
-          <Ionicons name="notifications-outline" size={30} color="white" />
-        </TouchableOpacity>
+  {/* NotificationBellIcon */}
+        <View style={{ position: "relative" }}>
+          <TouchableOpacity onPress={handlePress}>
+            <Ionicons name="notifications-outline" size={30} color="white" />
+            {notificationCount > 0 && (
+              <View style={styles.badge}>
+                <Text style={styles.badgeText}>{notificationCount}</Text>
+              </View>
+            )}
+          </TouchableOpacity>
+        </View>
       </View>
-
+  
       <View style={styles.imageContainer}>
         <Image source={image1} style={styles.image} />
-        <Text style={styles.mainText}>
-          Empowering The Businesses Through The Technology
-        </Text>
+        <Text style={styles.mainText}>Empowering The Businesses Through The Technology</Text>
       </View>
-
+  
       <View style={styles.searchContainer}>
         <Ionicons name="search" size={20} color="#999" style={styles.icon} />
         <TextInput
           style={styles.input}
           placeholder="Search"
           placeholderTextColor="#999"
+          value={searchText}
+          onChangeText={(text) => setSearchText(text)}
         />
       </View>
-
-      {/* OUR SERVICES SECTION */}
-      <View style={styles.servicesHeader}>
-        <Text style={styles.servicesTitle}>Our Services</Text>
-        <TouchableOpacity onPress={() => navigation.navigate("ServicesScreen")}>
-          <Text style={styles.knowMoreText}>Know more</Text>
-        </TouchableOpacity>
-      </View>
-
-      {/* HORIZONTAL SERVICE CARDS */}
-      <View>
-        <FlatList
-          data={services}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          keyExtractor={(item) => item.id}
-          contentContainerStyle={styles.servicesList}
-          renderItem={({ item }) => (
-            <TouchableOpacity style={styles.serviceCard}>
-              <Image source={item.image} style={styles.serviceImage} />
-              <Text style={styles.serviceText}>{item.title}</Text>
-            </TouchableOpacity>
+  
+      {/* ✅ Search Results Section */}
+      {searchText !== "" ? (
+        <>
+          {filteredProjects.length > 0 && (
+            <>
+              <View style={styles.servicesHeader}>
+                <Text style={styles.servicesTitle}>Projects</Text>
+              </View>
+  
+              <FlatList
+                data={filteredProjects}
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                keyExtractor={(item) => item.id}
+                contentContainerStyle={styles.projectsList}
+                renderItem={({ item }) => (
+                  <View style={styles.projectCard}>
+                    <Image source={item.image} style={styles.projectImage} />
+                    <Text style={styles.projectTitle}>{item.title}</Text>
+                    <Text style={styles.projectDescription}>{item.description}</Text>
+                    <TouchableOpacity
+                      style={styles.viewProfileButton}
+                      onPress={() => alert(`Viewing ${item.title} details`)}
+                    >
+                      <Text style={styles.viewProfileButtonText}>View Profile</Text>
+                    </TouchableOpacity>
+                  </View>
+                )}
+              />
+            </>
           )}
-        />
-      </View>
-      <View style={styles.partnerContainer}>
-        <Image source={s5} style={styles.partnerImage} />
-        <Text style={styles.partnerText}>
-          "Elevate Your Business Today! Partner with us for innovative Web and
-          App Development solutions tailored to your needs."
-        </Text>
-      </View>
-
-      <View>
-        <View style={styles.servicesHeader}>
-          <Text style={styles.servicesTitle}>Popular Projects</Text>
-        </View>
-        <FlatList
-          data={projects}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          keyExtractor={(item) => item.id}
-          contentContainerStyle={styles.projectsList}
-          renderItem={({ item }) => (
-            <View style={styles.projectCard}>
-              <Image source={item.image} style={styles.projectImage} />
-              <Text style={styles.projectTitle}>{item.title}</Text>
-              <Text style={styles.projectDescription}>{item.description}</Text>
-              <TouchableOpacity
-                style={styles.viewProfileButton}
-                onPress={()=>{
-                  navigation.navigate(item.link)
-                }}
-              >
-                <Text style={styles.viewProfileButtonText}>View Profile</Text>
+  
+          {filteredProjects.length === 0 && filteredServices.length > 0 && (
+            <>
+              <View style={styles.servicesHeader}>
+                <Text style={styles.servicesTitle}>Services</Text>
+              </View>
+  
+              <FlatList
+                data={filteredServices}
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                keyExtractor={(item) => item.id}
+                contentContainerStyle={styles.servicesList}
+                renderItem={({ item }) => (
+                  <TouchableOpacity style={styles.serviceCard}>
+                    <Image source={item.image} style={styles.serviceImage} />
+                    <Text style={styles.serviceText}>{item.title}</Text>
+                  </TouchableOpacity>
+                )}
+              />
+            </>
+          )}
+        </>
+      ) : (
+        <>
+          {/* SERVICES SECTION */}
+          <View style={styles.servicesHeader}>
+            <Text style={styles.servicesTitle}>Our Services</Text>
+            <TouchableOpacity onPress={() => alert("Know More clicked!")}>
+              <Text style={styles.knowMoreText}>Know more</Text>
+            </TouchableOpacity>
+          </View>
+  
+          <FlatList
+            data={services}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            keyExtractor={(item) => item.id}
+            contentContainerStyle={styles.servicesList}
+            renderItem={({ item }) => (
+              <TouchableOpacity style={styles.serviceCard}>
+                <Image source={item.image} style={styles.serviceImage} />
+                <Text style={styles.serviceText}>{item.title}</Text>
               </TouchableOpacity>
-            </View>
-          )}
-        />
-      </View>
-
-      <View style={styles.mm}>
-        <View style={styles.mmContent}>
-          <View style={styles.imageWrapper}>
-            <Image source={s9} style={styles.mmImage} />
-          </View>
-
-          <View style={styles.textButtonContainer}>
-            <Text style={styles.mmText}>
-              "Have a project in mind? Contact us today to discuss your
-              requirements. We're here to bring your vision to life!"
+            )}
+          />
+  
+          {/* PARTNER SECTION */}
+          <View style={styles.partnerContainer}>
+            <Image source={s5} style={styles.partnerImage} />
+            <Text style={styles.partnerText}>
+              "Elevate Your Business Today! Partner with us for innovative Web and App Development solutions tailored to your needs."
             </Text>
-
-            <TouchableOpacity
-              style={styles.customButton}
-              onPress={() => navigation.navigate("Contactus")}
-            >
-              <Text style={styles.buttonText}>Contact us</Text>
-            </TouchableOpacity>
           </View>
-        </View>
-      </View>
+  
+          {/* PROJECTS SECTION */}
+          <View style={styles.servicesHeader}>
+            <Text style={styles.servicesTitle}>Popular Projects</Text>
+          </View>
+  
+          <FlatList
+            data={projects}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            keyExtractor={(item) => item.id}
+            contentContainerStyle={styles.projectsList}
+            renderItem={({ item }) => (
+              <View style={styles.projectCard}>
+                <Image source={item.image} style={styles.projectImage} />
+                <Text style={styles.projectTitle}>{item.title}</Text>
+                <Text style={styles.projectDescription}>{item.description}</Text>
+                <TouchableOpacity
+                  style={styles.viewProfileButton}
+                  onPress={() => alert(`Viewing ${item.title} details`)}
+                >
+                  <Text style={styles.viewProfileButtonText}>View Profile</Text>
+                </TouchableOpacity>
+              </View>
+            )}
+          />
+  
+          {/* CALL US SECTION */}
+          <View style={styles.mm}>
+            <View style={styles.mmContent}>
+              <View style={styles.imageWrapper}>
+                <Image source={s9} style={styles.mmImage} />
+              </View>
+  
+              <View style={styles.textButtonContainer}>
+                <Text style={styles.mmText}>
+                  "Have a project in mind? Contact us today to discuss your requirements. We're here to bring your vision to life!"
+                </Text>
+  
+                <TouchableOpacity style={styles.customButton} onPress={() => alert("Calling...")}>
+                  <Text style={styles.buttonText}>Call Us</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </View>
+        </>
+      )}
     </ScrollView>
   );
 };
+
 
 const styles = StyleSheet.create({
   container: {
@@ -198,13 +298,29 @@ const styles = StyleSheet.create({
   },
   header: {
     position: "absolute",
-    top: hp("2.5%"),
+    top: hp("5%"),
     left: wp("5%"),
     right: wp("5%"),
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
     zIndex: 10,
+  },
+  badge: {
+    position: "absolute",
+    top: -5,
+    right: -5,
+    backgroundColor: "red",
+    borderRadius: 10,
+    width: 20,
+    height: 20,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  badgeText: {
+    color: "white",
+    fontSize: 12,
+    fontWeight: "bold",
   },
   imageContainer: {
     width: wp("100%"),
@@ -222,11 +338,14 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "white",
     position: "absolute",
+
     bottom: hp("6%"),
+
+    bottom: hp("8%"),
+
     left: wp("5%"),
     right: wp("5%"),
     zIndex: 10,
-    fontWeight: "bold",
   },
   searchContainer: {
     flexDirection: "row",
@@ -340,11 +459,15 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 
+
+
+  
+
   projectsList: {
     paddingHorizontal: wp("5%"),
     paddingVertical: hp("3%"),
   },
-
+  
   projectCard: {
     width: wp("80%"),
     backgroundColor: "#f9f9f9",
@@ -358,6 +481,8 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
 
+
+
   projectImage: {
     width: "100%",
     height: hp("20%"),
@@ -365,6 +490,8 @@ const styles = StyleSheet.create({
     marginBottom: hp("2%"),
     resizeMode: "contain",
   },
+
+
 
   projectTitle: {
     fontSize: RFPercentage(2.4),
@@ -390,6 +517,7 @@ const styles = StyleSheet.create({
     fontSize: RFPercentage(2),
     fontWeight: "bold",
   },
+
 
   mm: {
     flexGrow: 1,
@@ -426,6 +554,44 @@ const styles = StyleSheet.create({
     marginTop: hp("2%"),
     // Shadow for better visibility (iOS)
     shadowColor: "#000",
+
+  
+  mm: {
+    flexGrow: 1,
+    width: wp('100%'),
+    height: hp('32%'),
+    marginTop: hp('-5%'),
+  },
+  mmContent: {
+    width: wp('85%'), // Increased width for better utilization
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginHorizontal: wp('7.5%'), // Adjusted for better centering
+    marginVertical: hp('5%'),
+  },
+  textButtonContainer: {
+    flex: 1,
+    height: '100%',
+    justifyContent: 'space-between', // Pushes text to top and button to bottom
+    paddingVertical: hp('1%'),
+  },
+  mmText: {
+    fontSize: hp('2%'), // Responsive font size
+    fontWeight: 'bold', // Added bold text
+    lineHeight: hp('2.7%'),
+    color: '#333',
+  },
+  customButton: {
+    backgroundColor: "#007bff",
+    paddingVertical: hp('1.5%'),
+    borderRadius: 8,
+    width: wp('40%'), // Match image reference width
+    alignItems: "center",
+    marginTop: hp('2%'),
+    // Shadow for better visibility (iOS)
+    shadowColor: '#000',
+
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
     shadowRadius: 3,
@@ -434,6 +600,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: "#fff",
+
     fontSize: hp("1.8%"),
     fontWeight: "bold", // Bold text for button
     textAlign: "center",
@@ -445,6 +612,20 @@ const styles = StyleSheet.create({
     marginRight: wp("3%"),
     borderRadius: hp("3%"),
   },
+
+    fontSize: hp('1.8%'),
+    fontWeight: 'bold', // Bold text for button
+    textAlign: 'center',
+  },
+  mmImage: {
+    width: wp('30%'),
+    height: hp('25%'),
+    resizeMode: 'contain',
+    marginRight: wp('3%'),
+    borderRadius: hp('3%')
+  },
+
+
 });
 
 export default HomeScreen;

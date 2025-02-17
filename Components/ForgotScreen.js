@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
   TextInput,
   StyleSheet,
   TouchableOpacity,
+  Alert,
 } from "react-native";
 import {
   responsiveWidth,
@@ -13,39 +14,79 @@ import {
 } from "react-native-responsive-dimensions";
 
 const ForgotScreen = ({ navigation }) => {
+  const [email, setEmail] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  const handlePasswordReset = async () => {
+    if (!email || !newPassword || !confirmPassword) {
+      Alert.alert("Error", "All fields are required");
+      return;
+    }
+    if (newPassword !== confirmPassword) {
+      Alert.alert("Error", "Passwords do not match");
+      return;
+    }
+
+    try {
+      const response = await fetch("http://192.168.29.167:5000/ForgotScreen", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, newPassword }),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        Alert.alert("Success", "Password updated successfully");
+        navigation.navigate("LoginUpScreen");
+      } else {
+        Alert.alert("Error", data.message);
+      }
+    } catch (error) {
+      Alert.alert("Error", "Server error. Please try again.");
+    }
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerText}>Create new password</Text>
-        <Text style={styles.subHeader}>Keep it simple.keep it safe.</Text>
+        <Text style={styles.subHeader}>Keep it simple. Keep it safe.</Text>
       </View>
 
       <View style={styles.formContainer}>
-      <Text style={styles.label}>Email</Text>
+        <Text style={styles.label}>Email</Text>
         <TextInput
           style={styles.input}
-          placeholder="Email"
+          placeholder="Enter your email"
           placeholderTextColor="#999"
+          value={email}
+          onChangeText={setEmail}
         />
+
         <Text style={styles.label}>New Password</Text>
         <TextInput
           style={styles.input}
           placeholder="New Password"
           placeholderTextColor="#999"
+          secureTextEntry
+          value={newPassword}
+          onChangeText={setNewPassword}
         />
 
-        <Text style={styles.label}> ConfirmPassword</Text>
+        <Text style={styles.label}>Confirm Password</Text>
         <TextInput
           style={styles.input}
-          placeholder="ConfirmPassword"
+          placeholder="Confirm Password"
           placeholderTextColor="#999"
           secureTextEntry
+          value={confirmPassword}
+          onChangeText={setConfirmPassword}
         />
 
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate("LoginUpScreen")}
-        >
+        <TouchableOpacity style={styles.button} onPress={handlePasswordReset}>
           <Text style={styles.buttonText}>Save Password</Text>
         </TouchableOpacity>
       </View>
@@ -68,14 +109,13 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontSize: responsiveFontSize(3),
-    fontWeight: 'bold',
-    color: '#000',
+    fontWeight: "bold",
+    color: "#000",
     marginBottom: responsiveHeight(1),
   },
   subHeader: {
     fontSize: responsiveFontSize(2),
-   
-    color: '#000',
+    color: "#000",
   },
   formContainer: {
     flex: 1,
@@ -111,29 +151,6 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: responsiveFontSize(2),
     fontWeight: "600",
-  },
-  forgotPassword: {
-    alignSelf: "flex-end",
-    marginBottom: responsiveHeight(2),
-  },
-  forgotPasswordText: {
-    color: "#4688F1",
-    fontSize: responsiveFontSize(1.6),
-  },
-  footer: {
-    flexDirection: "row",
-    justifyContent: "center",
-    marginTop: responsiveHeight(3),
-  },
-  footerText: {
-    fontSize: responsiveFontSize(1.6),
-    color: "#666",
-  },
-  signUp: {
-    color: "#4688F1",
-    fontSize: responsiveFontSize(1.6),
-    fontWeight: "600",
-    marginLeft: responsiveWidth(2),
   },
 });
 

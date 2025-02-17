@@ -1,8 +1,10 @@
-import React, { useState,useEffect } from 'react';
-import { View, Text, TextInput, Image, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
+
+import React, { useState, useEffect } from 'react';
+import { View, Text, TextInput, Image, TouchableOpacity, StyleSheet, ScrollView, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import * as ImagePicker from 'react-native-image-picker';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {
   widthPercentageToDP as wp,
@@ -18,7 +20,33 @@ const EditProfileScreen = () => {
     dob: '',
     address: ''
   });
-  const [profileImage, setProfileImage] = useState(require('../Images/p1.png'));
+  
+  const [profileImage, setProfileImage] = useState(null);
+
+    // Fetch the saved profile data when the component mounts
+    useEffect(() => {
+      const fetchProfileData = async () => {
+        try {
+          const name = await AsyncStorage.getItem('name');
+          const email = await AsyncStorage.getItem('email');
+          const phone = await AsyncStorage.getItem('phone');
+          const dob = await AsyncStorage.getItem('dob');
+          const address = await AsyncStorage.getItem('address');
+          const image = await AsyncStorage.getItem('profileImage');
+  
+          if (name && email && phone && dob && address) {
+            setForm({ name, email, phone, dob, address });
+          }
+          if (image) {
+            setProfileImage(image);
+          }
+        } catch (error) {
+          console.error('Error loading profile data', error);
+        }
+      };
+  
+      fetchProfileData();
+    }, []); 
 
   const handleChange = (key, value) => {
     setForm({ ...form, [key]: value });
@@ -31,47 +59,101 @@ const EditProfileScreen = () => {
         quality: 0.8,
       },
       (response) => {
-        if (!response.didCancel && !response.error) {
+        if (response.assets && response.assets.length > 0) {
           const uri = response.assets[0].uri;
-          setProfileImage({ uri });
+          setProfileImage(uri);
+          AsyncStorage.setItem('profileImage', uri);
         }
       }
     );
   };
+
+  // Handle Save Profile
+  const handleSave = async () => {
+    if (!form.email) {
+      Alert.alert("Error", "Email is required!");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('name', form.name);
+    formData.append('email', form.email);
+    formData.append('phone', form.phone);
+    formData.append('dob', form.dob);
+    formData.append('address', form.address);
+
+    if (profileImage) {
+      formData.append('profileImage', {
+        uri: profileImage,
+        type: 'image/jpeg',
+        name: 'profile.jpg'
+      });
+    }
+
+    try {
+      const response = await fetch('http://192.168.29.167:5000/api/EditProfileScreen', { 
+        method: 'POST',
+        body: formData,  // ✅ Let the browser handle Content-Type automatically
+        headers: {
+          'Accept': 'application/json'
+        },
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        await AsyncStorage.setItem('name', form.name);
+        await AsyncStorage.setItem('email', form.email);
+        await AsyncStorage.setItem('phone', form.phone);
+        await AsyncStorage.setItem('dob', form.dob);
+        await AsyncStorage.setItem('address', form.address);
+        // Success: Profile updated, show success message
+        Alert.alert("Success", "Profile updated successfully!", [
+          { text: "OK", onPress: () => navigation.navigate('HomeScreen') }
+        ]);
+      } else {
+        // Error: Profile update failed
+        Alert.alert("Error", data.error || "Failed to update profile");
+      }
+    } catch (error) {
+      Alert.alert("Error", "Failed to connect to the server");
+    }
+  };
+
   return (
     <ScrollView>
-    <View style={styles.container}>
-      <View style={styles.headerContainer}>
-        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
-          <Icon name="arrow-left" size={wp('6%')} color="black" />
-        </TouchableOpacity>
-        <Text style={styles.header}>Edit Profile</Text>
-      </View>
-      
-      <View style={styles.profileImageWrapper}>
-        <Image 
-          source={profileImage} 
-          style={styles.profileImage} 
-        />
-        {/* <TouchableOpacity style={styles.editIcon} onPress={handleImagePick}>
-          <Icon name="pencil" size={wp('4%')} color="black" />
-        </TouchableOpacity> */}
-      </View>
-    <Text>Name :</Text>
-      <TextInput style={styles.input}  value={form.name} onChangeText={text => handleChange('name', text)} />
+      <View style={styles.container}>
+        <View style={styles.headerContainer}>
+          <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+            <Icon name="arrow-left" size={wp('6%')} color="black" />
+          </TouchableOpacity>
+          <Text style={styles.header}>Edit Profile</Text>
+        </View>
+        
+        <View style={styles.profileImageWrapper}>
+          <Image 
+            source={profileImage ? { uri: profileImage } : require('../Images/p1.png')} 
+            style={styles.profileImage} 
+          />
+          <TouchableOpacity style={styles.editIcon} onPress={handleImagePick}>
+            <Icon name="pencil" size={wp('4%')} color="black" />
+          </TouchableOpacity>
+        </View>
+        <Text>Name :</Text>
+        <TextInput style={styles.input}  value={form.name} onChangeText={text => handleChange('name', text)} />
         <Text>Email :</Text>
-      <TextInput style={styles.input}  value={form.email} onChangeText={text => handleChange('email', text)} keyboardType="email-address" />
+        <TextInput style={styles.input}  value={form.email} onChangeText={text => handleChange('email', text)} keyboardType="email-address" />
         <Text>Phone :</Text>
-      <TextInput style={styles.input}  value={form.phone} onChangeText={text => handleChange('phone', text)} keyboardType="phone-pad" />
+        <TextInput style={styles.input}  value={form.phone} onChangeText={text => handleChange('phone', text)} keyboardType="phone-pad" />
         <Text>Date of Birth :</Text>
-      <TextInput style={styles.input}  value={form.dob} onChangeText={text => handleChange('dob', text)} />
+        <TextInput style={styles.input}  value={form.dob} onChangeText={text => handleChange('dob', text)} />
         <Text>Address :</Text>
-      <TextInput style={styles.input}  value={form.address} onChangeText={text => handleChange('address', text)} />
-      
-      <TouchableOpacity style={styles.saveButton}>
-        <Text style={styles.saveButtonText}>Save changes</Text>
-      </TouchableOpacity>
-    </View>
+        <TextInput style={styles.input}  value={form.address} onChangeText={text => handleChange('address', text)} />
+        
+        {/* Save Button */}
+        <TouchableOpacity style={styles.saveButton} onPress={handleSave}>
+          <Text style={styles.saveButtonText}>Save changes</Text>
+        </TouchableOpacity>
+      </View>
     </ScrollView>
   );
 };
