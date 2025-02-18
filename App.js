@@ -7,53 +7,48 @@ import OnboardingScreen from "./Components/OnboardingScreen";
 import ForgotScreen from "./Components/ForgotScreen";
 import BottomScreen from "./navigation/BottomScreen";
 import EditProfileScreen from "./Components/EditProfileScreen";
-// import Aboutus from "./Components/Aboutus";
-// import Careers from "./Components/Careers";
-// import Contactus from "./Components/Contactus";
-// import Feedback from "./Components/Feedback";
-// import Meet from "./Components/Meet";
-// import Notifications from "./Components/Notifications";
 import DrawerNavigator from "./Components/DrawerNavigator";
 import Privacy from "./Components/Privacy";
 import Help from "./Components/Help";
 import Terms from "./Components/Terms";
 import Join from "./Components/Join";
-
-
+import Web from "./Components/Web";
+import Newapp from "./Components/Newapp";
+import Graphic from "./Components/Graphic";
+import Digital from "./Components/Digital";
+import ServicesScreen from "./Components/ServicesScreen";
 
 const Stack = createStackNavigator();
 export default function App() {
   return (
     <>
-    <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName="OnboardingScreen"
-        screenOptions={{ headerShown: false }}
-      >
-        <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
-        <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
-        <Stack.Screen name="LoginUpScreen" component={LoginUpScreen} />
-        <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} />
-        <Stack.Screen name="ForgotScreen" component={ForgotScreen} />
-        <Stack.Screen name="BottomScreen" component={BottomScreen} />
-        <Stack.Screen name="EditProfileScreen" component={EditProfileScreen} />
-        {/* <Stack.Screen name="Drawer" component={DrawerNavigator} /> */}
-        {/* <Stack.Screen name="Aboutus" component={Aboutus} />
-        <Stack.Screen name="Careers" component={Careers} />
-        <Stack.Screen name="Contactus" component={Contactus} />
-        <Stack.Screen name="Feedback" component={Feedback} />
-        <Stack.Screen name="Meet" component={Meet} />
-        <Stack.Screen name="Notifications" component={Notifications} /> */}
-       
-       <Stack.Screen name="DrawerNavigator" component={DrawerNavigator} />
-       <Stack.Screen name="Privacy" component={Privacy} />
-       <Stack.Screen name="Help" component={Help} />
-      <Stack.Screen name="Terms" component={Terms} />
-      <Stack.Screen name="Join" component={Join} /> 
-   
-      </Stack.Navigator>
-    </NavigationContainer>
+      <NavigationContainer>
+        <Stack.Navigator
+          initialRouteName="OnboardingScreen"
+          screenOptions={{ headerShown: false }}
+        >
+          <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
+          <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
+          <Stack.Screen name="LoginUpScreen" component={LoginUpScreen} />
+          <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} />
+          <Stack.Screen name="ForgotScreen" component={ForgotScreen} />
+          <Stack.Screen name="BottomScreen" component={BottomScreen} />
+          <Stack.Screen
+            name="EditProfileScreen"
+            component={EditProfileScreen}
+          />
+          <Stack.Screen name="DrawerNavigator" component={DrawerNavigator} />
+          <Stack.Screen name="Privacy" component={Privacy} />
+          <Stack.Screen name="Help" component={Help} />
+          <Stack.Screen name="Terms" component={Terms} />
+          <Stack.Screen name="Join" component={Join} />
+          <Stack.Screen name="Web" component={Web} />
+          <Stack.Screen name="Newapp" component={Newapp} />
+          <Stack.Screen name="Graphic" component={Graphic} />
+          <Stack.Screen name="Digital" component={Digital} />
+        <Stack.Screen name="ServicesScreen" component={ServicesScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
     </>
   );
 }
-

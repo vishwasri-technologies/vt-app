@@ -11,7 +11,7 @@ const workflow = [
     Description:
       "Developed a professional website for Vishwasri Technologies to showcase its software development services. The platform highlights the company’s expertise, providing clear and concise information about the services offered, with a clean and responsive design for an optimal user experience.",
     Technologies: "React.js, Node.js, Express.js, MongoDB,AWS",
-    Link:"https://vishcom.net/"
+    Link: "https://vishcom.net/",
   },
   {
     id: 2,
@@ -21,7 +21,7 @@ const workflow = [
     Description:
       "Developed a seamless and user-friendly hospital appointment booking website for TrustCare. The platform allows patients to schedule appointments with doctors, view available slots, and receive automated confirmations. The website features a responsive design, real-time booking updates, and ensuring a smooth and efficient healthcare experience.",
     Technologies: "React.js, Node.js, Express.js, MongoDB,AWS",
-    Link:"https://main.d2ye622qrxqigu.amplifyapp.com/"
+    Link: "https://main.d2ye622qrxqigu.amplifyapp.com/",
   },
 
   {
@@ -32,7 +32,7 @@ const workflow = [
     Description:
       "Developed a responsive e-commerce website with structured product categories, detailed descriptions, and smooth navigation for an enhanced user experience.Developed a responsive e-commerce website with structured product categories, detailed descriptions, and smooth navigation for an enhanced user experienceanced user experience.",
     Technologies: "React.js, Node.js, Express.js, MongoDB,AWS",
-    Link:"https://srilaxmibhagavan.vishcom.net/"
+    Link: "https://srilaxmibhagavan.vishcom.net/",
   },
   {
     id: 4,
@@ -42,7 +42,10 @@ const workflow = [
     Description:
       "Developed a static university website for Edunova, providing essential information about courses, faculty, admissions, and campus facilities. The website features a structured layout, responsive design, and user-friendly navigation, ensuring accessibility for students, faculty, and prospective applicants.",
     Technologies: "React.js, Node.js, Express.js, MongoDB,AWS",
-    Link:"https://main.d7nvfk98hzreb.amplifyapp.com/"
+    Link: "https://main.d7nvfk98hzreb.amplifyapp.com/",
   },
 ];
- export default workflow;
+export default workflow;
+
+
+

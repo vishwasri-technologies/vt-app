@@ -53,9 +53,9 @@ const EditProfileScreen = () => {
           source={profileImage} 
           style={styles.profileImage} 
         />
-        <TouchableOpacity style={styles.editIcon} onPress={handleImagePick}>
+        {/* <TouchableOpacity style={styles.editIcon} onPress={handleImagePick}>
           <Icon name="pencil" size={wp('4%')} color="black" />
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
     <Text>Name :</Text>
       <TextInput style={styles.input}  value={form.name} onChangeText={text => handleChange('name', text)} />

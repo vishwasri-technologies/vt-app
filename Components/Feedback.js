@@ -16,7 +16,7 @@ const CustomCheckbox = ({ isChecked, onPress }) => (
 );
 
 const feedbackType = {
-  appPerformance: false, // Changed from "product" to "appPerformance"
+  appPerformance: false, 
   featureRequest: false,
   customerSupport: false,
   usabilityDesign: false,

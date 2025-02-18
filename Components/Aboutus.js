@@ -12,7 +12,7 @@ import office2 from "../Images/office2.png";
 export default function Aboutus() {
   return (
     <ScrollView style={styles.container}>
-      {/* Heading */}
+     
       <Text style={styles.heading}>About Us</Text>
       <Text style={styles.description}>
         Enhancing businesses with efficient and reliable digital solutions.
@@ -31,7 +31,7 @@ export default function Aboutus() {
         </View>
       </View>
 
-      {/* Mission */}
+     
       <View style={{ marginTop: hp("18%"), marginBottom: hp("5%") }}>
         <View style={styles.section}>
           <Text style={styles.subHeading}>🎯 Mission</Text>
@@ -42,7 +42,7 @@ export default function Aboutus() {
           </Text>
         </View>
 
-        {/* Vision */}
+     
         <View style={styles.section}>
           <Text style={styles.subHeading}>🌍 Vision</Text>
           <Text style={styles.text}>
@@ -53,7 +53,7 @@ export default function Aboutus() {
         </View>
       </View>
 
-      {/* What We Do */}
+  
       <View style={styles.cardContainer}>
         <Image source={office2} style={styles.image} resizeMode="cover" />
         <View style={styles.textOverlay}>
@@ -66,7 +66,6 @@ export default function Aboutus() {
         </View>
       </View>
 
-      {/* Why Choose Us? */}
       <View style={{ marginTop: hp("20%"), marginBottom: hp("5%") }}>
         <View style={styles.section}>
           <Text style={styles.subHeading}>Why Choose Us?</Text>
@@ -132,7 +131,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
     shadowRadius: 5,
-    // In front of image
+   
   },
   subHeading: {
     fontSize: wp("5%"),
