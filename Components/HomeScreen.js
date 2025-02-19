@@ -4,7 +4,6 @@ import {
   Text,
   Button,
   View,
-  
   ScrollView,
   Image,
   TouchableOpacity,
@@ -12,7 +11,7 @@ import {
   FlatList,
 } from "react-native";
 import { useNavigation, DrawerActions } from "@react-navigation/native";
-import  { useEffect } from 'react'; 
+import { useEffect } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import image1 from "../Images/image1.png";
 import {
@@ -66,11 +65,10 @@ const projects = [
 const openDrawer = createDrawerNavigator();
 const HomeScreen = () => {
   const navigation = useNavigation();
-  
+
   useEffect(() => {
     navigation.navigate("DrawerNavigator");
-  }, [navigation]); 
-
+  }, [navigation]);
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -105,7 +103,7 @@ const HomeScreen = () => {
       {/* OUR SERVICES SECTION */}
       <View style={styles.servicesHeader}>
         <Text style={styles.servicesTitle}>Our Services</Text>
-        <TouchableOpacity onPress={() =>    navigation.navigate("ServicesScreen")}>
+        <TouchableOpacity onPress={() => navigation.navigate("ServicesScreen")}>
           <Text style={styles.knowMoreText}>Know more</Text>
         </TouchableOpacity>
       </View>
