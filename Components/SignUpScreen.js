@@ -1,11 +1,9 @@
 
-
-import React, { useState } from 'react';
+import React,{useState} from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView, Dimensions } from 'react-native';
+import axios from 'axios';
 
 const { width, height } = Dimensions.get('window');
-
-import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-dimensions';
 
 const SignUpScreen = ({ navigation }) => {
   const [firstName, setFirstName] = useState('');
@@ -20,63 +18,79 @@ const SignUpScreen = ({ navigation }) => {
   const [passwordError, setPasswordError] = useState('');
   const [confirmPasswordError, setConfirmPasswordError] = useState('');
 
-  const handleSignUp = () => {
-    const firstNameRegex = /^[a-zA-Z]+$/;
-    const lastNameRegex = /^[a-zA-Z]+$/;
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+  const handleSignUp = async () => {
+  const firstNameRegex = /^[a-zA-Z]+$/;
+  const lastNameRegex = /^[a-zA-Z]+$/;
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/; // Corrected regex
 
-    let hasError = false;
+  let hasError = false;
 
-    if (!firstNameRegex.test(firstName)) {
-      setFirstNameError('First name should contain only letters');
-      hasError = true;
-    } else {
-      setFirstNameError('');
-    }
+  if (!firstNameRegex.test(firstName)) {
+    setFirstNameError('First name should contain only letters');
+    hasError = true;
+  } else {
+    setFirstNameError('');
+  }
 
-    if (!lastNameRegex.test(lastName)) {
-      setLastNameError('Last name should contain only letters');
-      hasError = true;
-    } else {
-      setLastNameError('');
-    }
+  if (!lastNameRegex.test(lastName)) {
+    setLastNameError('Last name should contain only letters');
+    hasError = true;
+  } else {
+    setLastNameError('');
+  }
 
-    if (!emailRegex.test(email)) {
-      setEmailError('Invalid email');
-      hasError = true;
-    } else {
-      setEmailError('');
-    }
+  if (!emailRegex.test(email)) {
+    setEmailError('Invalid email');
+    hasError = true;
+  } else {
+    setEmailError('');
+  }
 
-    if (!passwordRegex.test(password)) {
-      setPasswordError('Password should contain at least 8 characters, one uppercase letter, one lowercase letter and one number');
-      hasError = true;
-    } else {
-      setPasswordError('');
-    }
+  if (!passwordRegex.test(password)) {
+    setPasswordError('Password should contain at least 8 characters, one uppercase letter, one lowercase letter, and one number');
+    hasError = true;
+  } else {
+    setPasswordError('');
+  }
 
-    if (password !== confirmPassword) {
-      setConfirmPasswordError('Password and confirm password do not match');
-      hasError = true;
-    } else {
-      setConfirmPasswordError('');
-    }
+  if (password !== confirmPassword) {
+    setConfirmPasswordError('Password and confirm password do not match');
+    hasError = true;
+  } else {
+    setConfirmPasswordError('');
+  }
 
-    if (!hasError) {
-      // Call API to sign up
+  if (!hasError) {
+    // Call API to sign up
+    try {
+      const response = await axios.post('http://192.168.29.167:5000/SignUpScreen', {
+        firstName,
+        lastName,
+        email,
+        password,
+      });
+
+      if (response.status === 201) {
+        alert('Registration successful');
+        navigation.navigate('LoginUpScreen');
+      } else {
+        alert('Registration failed');
+      }
+    } catch (error) {
+      console.error('Error during registration:', error.response ? error.response.data.message : error.message);
+      alert(error.response?.data.message || 'Something went wrong');
     }
   }
+};
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      {/* Header Section */}
       <View style={styles.header}>
         <Text style={styles.headerText}>Register</Text>
         <Text style={styles.subHeaderText}>Join us today and turn your vision into reality.</Text>
       </View>
 
-      {/* Form Section */}
       <View style={styles.form}>
         <Text style={styles.label}>First Name</Text>
         <TextInput
@@ -126,16 +140,14 @@ const SignUpScreen = ({ navigation }) => {
         />
         {confirmPasswordError && <Text style={styles.error}>{confirmPasswordError}</Text>}
 
-        {/* Signup Button */}
-        <TouchableOpacity style={styles.signUpButton} onPress={() => navigation.navigate('LoginUpScreen')}>
+        <TouchableOpacity style={styles.signUpButton} onPress={handleSignUp}>
           <Text style={styles.signUpButtonText}>SignUp</Text>
         </TouchableOpacity>
 
-        {/* Login Link */}
         <Text style={styles.loginText}>
           Already have an account?{' '}
           <Text style={styles.loginLink} onPress={() => navigation.navigate('LoginUpScreen')}>
-            login here
+            Login here
           </Text>
         </Text>
       </View>

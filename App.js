@@ -11,6 +11,15 @@ import ForgotScreen from "./Components/ForgotScreen";
 
 import BottomScreen from "./navigation/BottomScreen";
 import EditProfileScreen from "./Components/EditProfileScreen";
+
+import HomeScreen from "./Components/HomeScreen";
+// import Aboutus from "./Components/Aboutus";
+// import Careers from "./Components/Careers";
+// import Contactus from "./Components/Contactus";
+// import Feedback from "./Components/Feedback";
+// import Meet from "./Components/Meet";
+// import Notifications from "./Components/Notifications";
+
 import DrawerNavigator from "./Components/DrawerNavigator";
 import Privacy from "./Components/Privacy";
 import Help from "./Components/Help";
@@ -28,6 +37,7 @@ const Stack = createStackNavigator();
 export default function App() {
   return (
     <>
+
 
       <NavigationContainer>
         <Stack.Navigator
@@ -59,6 +69,7 @@ export default function App() {
         <Stack.Screen name="PortfolioScreen" component={PortfolioScreen} />
         </Stack.Navigator>
       </NavigationContainer>
+
     </>
   );
 }
