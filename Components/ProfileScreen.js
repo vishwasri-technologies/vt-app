@@ -22,10 +22,8 @@ const ProfileScreen = () => {
   // Fetch user data from the backend API when the component mounts
   useEffect(() => {
 
-      
-
     const fetchUserProfile = async () => {
-      try {
+      try { 
         const response = await fetch("http://192.168.29.167:5000/api/ProfileScreen");
         const data = await response.json();
 

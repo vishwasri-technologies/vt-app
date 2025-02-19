@@ -12,7 +12,9 @@ import ForgotScreen from "./Components/ForgotScreen";
 import BottomScreen from "./navigation/BottomScreen";
 import EditProfileScreen from "./Components/EditProfileScreen";
 
+
 import HomeScreen from "./Components/HomeScreen";
+
 // import Aboutus from "./Components/Aboutus";
 // import Careers from "./Components/Careers";
 // import Contactus from "./Components/Contactus";
@@ -25,6 +27,7 @@ import Privacy from "./Components/Privacy";
 import Help from "./Components/Help";
 import Terms from "./Components/Terms";
 import Join from "./Components/Join";
+import HomeScreen from "./Components/HomeScreen";
 
 import Web from "./Components/Web";
 import Newapp from "./Components/Newapp";
@@ -42,9 +45,6 @@ const Stack = createStackNavigator();
 export default function App() {
   return (
     <>
-
-
-
       <NavigationContainer>
         <Stack.Navigator
           initialRouteName="OnboardingScreen"
@@ -75,7 +75,6 @@ export default function App() {
         <Stack.Screen name="PortfolioScreen" component={PortfolioScreen} />
         </Stack.Navigator>
       </NavigationContainer>
-
     </>
   );
 }

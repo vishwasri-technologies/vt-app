@@ -7,33 +7,9 @@ import {
 
 import office1 from "../Images/office1.png";
 import office2 from "../Images/office2.png";
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
-import BottomScreen from "../navigation/BottomScreen";
->>>>>>> ca07a65 (Aboutus)
-=======
-=======
->>>>>>> 534bdd3 (changes in forgot screen)
-import BottomScreen from "../navigation/BottomScreen";
-=======
-
->>>>>>> f535048 (Second)
-<<<<<<< HEAD
->>>>>>> 75e5302 (Second)
-=======
-=======
-import BottomScreen from "../navigation/BottomScreen";
->>>>>>> 213670b (changes in forgot screen)
->>>>>>> 534bdd3 (changes in forgot screen)
-=======
 
 import BottomScreen from "../navigation/BottomScreen";
 
->>>>>>> edb943d (done notifications)
 
 export default function Aboutus() {
   return (
@@ -104,31 +80,9 @@ export default function Aboutus() {
         </View>
       </View>
       <View>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    
-=======
-        <BottomScreen />
->>>>>>> ca07a65 (Aboutus)
-=======
-=======
->>>>>>> 534bdd3 (changes in forgot screen)
-        <BottomScreen />
-=======
-    
->>>>>>> f535048 (Second)
-<<<<<<< HEAD
->>>>>>> 75e5302 (Second)
-=======
-=======
-        <BottomScreen />
->>>>>>> 213670b (changes in forgot screen)
->>>>>>> 534bdd3 (changes in forgot screen)
-=======
 
->>>>>>> edb943d (done notifications)
+        <BottomScreen />
+
       </View>
     </ScrollView>
   );
