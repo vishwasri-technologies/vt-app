@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react';
 import { View, Text,textAlign, Alert,StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import {

@@ -480,9 +480,6 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 3,
   },
-
-
-
   projectImage: {
     width: "100%",
     height: hp("20%"),

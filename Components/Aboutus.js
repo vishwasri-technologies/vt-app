@@ -7,7 +7,11 @@ import {
 
 import office1 from "../Images/office1.png";
 import office2 from "../Images/office2.png";
+<<<<<<< HEAD
 
+=======
+import BottomScreen from "../navigation/BottomScreen";
+>>>>>>> ca07a65 (Aboutus)
 
 export default function Aboutus() {
   return (
@@ -78,7 +82,11 @@ export default function Aboutus() {
         </View>
       </View>
       <View>
+<<<<<<< HEAD
     
+=======
+        <BottomScreen />
+>>>>>>> ca07a65 (Aboutus)
       </View>
     </ScrollView>
   );

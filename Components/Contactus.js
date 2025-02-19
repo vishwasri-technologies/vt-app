@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { View, Text, StyleSheet, Linking, TouchableOpacity } from 'react-native';
 import React from 'react';
 import MapView, { Marker } from 'react-native-maps';
@@ -114,3 +115,15 @@ const styles = StyleSheet.create({
     marginTop: hp('2%'),
   },
 });
+=======
+import { View, Text } from 'react-native'
+import React from 'react'
+
+export default function Contactus() {
+  return (
+    <View>
+      <Text>Contactus</Text>
+    </View>
+  )
+}
+>>>>>>> ca07a65 (Aboutus)
