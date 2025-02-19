@@ -7,8 +7,11 @@ import {
 } from "react-native-responsive-screen";
 import call from "../Images/call.png";
 import { ScrollView } from "react-native-gesture-handler";
+import { useNavigation } from "@react-navigation/native";
+// import { use } from "react";
 
 export default function Web() {
+  const navigation = useNavigation();
   return (
     <ScrollView>
     <View style={styles.container}>
@@ -46,8 +49,8 @@ export default function Web() {
           <Text style={styles.contactSubtitle}>
             Get in touch with us to discuss your web development needs.
           </Text>
-          <TouchableOpacity style={styles.callButton}>
-            <Text style={styles.callButtonText}>Call us</Text>
+          <TouchableOpacity style={styles.callButton}  onPress={() => navigation.navigate("Contactus")}>
+            <Text style={styles.callButtonText}>Contact Us</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -69,7 +72,7 @@ const styles = StyleSheet.create({
   overlay: {
     position: "absolute",
     top: hp("6%"),
-    left: wp("3%"),
+    left: wp("1%"),
   
     padding: wp("2%"),
     borderRadius: 5,

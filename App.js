@@ -17,6 +17,8 @@ import Newapp from "./Components/Newapp";
 import Graphic from "./Components/Graphic";
 import Digital from "./Components/Digital";
 import ServicesScreen from "./Components/ServicesScreen";
+import ContactUs from './Components/Contactus';
+import PortfolioScreen from "./Components/PortfolioScreen";
 
 const Stack = createStackNavigator();
 export default function App() {
@@ -47,6 +49,8 @@ export default function App() {
           <Stack.Screen name="Graphic" component={Graphic} />
           <Stack.Screen name="Digital" component={Digital} />
         <Stack.Screen name="ServicesScreen" component={ServicesScreen} />
+        <Stack.Screen name="Contactus" component={ContactUs} />
+        <Stack.Screen name="PortfolioScreen" component={PortfolioScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </>

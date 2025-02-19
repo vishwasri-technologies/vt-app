@@ -6,8 +6,9 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
-
+import { useNavigation } from "@react-navigation/native";
 export default function Newapp() {
+  const navigation = useNavigation();
   return (
     <ScrollView>
       <View style={styles.mainContainer}>
@@ -44,8 +45,8 @@ export default function Newapp() {
             <Text style={styles.contactDescription}>
             Get in touch with us to discuss your app development needs.
             </Text>
-            <TouchableOpacity style={styles.contactButton}>
-              <Text style={styles.contactButtonText}>Call us</Text>
+            <TouchableOpacity style={styles.contactButton} onPress={() => navigation.navigate("Contactus")}>
+              <Text style={styles.contactButtonText}>Contact Us</Text>
             </TouchableOpacity>
           </View>
         </View>

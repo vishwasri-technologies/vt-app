@@ -31,6 +31,7 @@ import jt from "../Images/jt.png";
 import s8 from "../Images/student3.png";
 import s9 from "../Images/mobile.png";
 import DrawerNavigator from "./DrawerNavigator";
+import portfolio from "./PortfolioScreen";
 
 const services = [
   { id: "1", title: "Web Development", image: s4 },
@@ -46,6 +47,8 @@ const projects = [
     description:
       "A complete education management system designed for institutions to manage courses, student records, fees. It allows students to track their progress.",
     image: s6,
+    link:portfolio
+    
   },
   {
     id: "2",
@@ -53,6 +56,7 @@ const projects = [
     description:
       "Developed a responsive e-commerce website with structured product categories and smooth navigation for an enhanced user experience.",
     image: jt,
+    link:portfolio
   },
   {
     id: "3",
@@ -60,6 +64,7 @@ const projects = [
     description:
       "Developed a hospital appointment booking website for TrustCare, enabling easy scheduling, real-time updates, and automated confirmations.",
     image: s8,
+    link:portfolio
   },
 ];
 const openDrawer = createDrawerNavigator();
@@ -149,7 +154,9 @@ const HomeScreen = () => {
               <Text style={styles.projectDescription}>{item.description}</Text>
               <TouchableOpacity
                 style={styles.viewProfileButton}
-                onPress={() => alert(`Viewing ${item.title} details`)}
+                onPress={()=>{
+                  navigation.navigate(item.link)
+                }}
               >
                 <Text style={styles.viewProfileButtonText}>View Profile</Text>
               </TouchableOpacity>
@@ -172,9 +179,9 @@ const HomeScreen = () => {
 
             <TouchableOpacity
               style={styles.customButton}
-              onPress={() => alert("Calling...")}
+              onPress={() => navigation.navigate("Contactus")}
             >
-              <Text style={styles.buttonText}>Call Us</Text>
+              <Text style={styles.buttonText}>Contact us</Text>
             </TouchableOpacity>
           </View>
         </View>
