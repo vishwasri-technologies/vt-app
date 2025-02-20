@@ -27,7 +27,6 @@ import Privacy from "./Components/Privacy";
 import Help from "./Components/Help";
 import Terms from "./Components/Terms";
 import Join from "./Components/Join";
-import HomeScreen from "./Components/HomeScreen";
 
 import Web from "./Components/Web";
 import Newapp from "./Components/Newapp";
