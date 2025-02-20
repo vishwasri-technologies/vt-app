@@ -13,8 +13,6 @@ import BottomScreen from "./navigation/BottomScreen";
 import EditProfileScreen from "./Components/EditProfileScreen";
 
 
-import HomeScreen from "./Components/HomeScreen";
-
 // import Aboutus from "./Components/Aboutus";
 // import Careers from "./Components/Careers";
 // import Contactus from "./Components/Contactus";
