@@ -11,8 +11,7 @@ const Join = () => {
       <Text style={styles.heading}>Join our Team</Text>
       <Text style={styles.paragraph}>
         At Vishwasri Technologies, we believe in fostering innovation and
-        empowering talent. We are always on the lookout for individuals who
-        share our passion for technology and excellence.
+        empowering talent.
       </Text>
       <Text style={styles.sectionTitle}>Why Join Us</Text>
       <Text style={styles.paragraph}>
@@ -20,16 +19,16 @@ const Join = () => {
         growth, and innovation. Here’s what you can expect:
       </Text>
       <Text style={styles.paragraph}>
-      &#8226; A supportive and inclusive work environment where your contributions are
-        recognized.
+        &#8226; A supportive and inclusive work environment where your
+        contributions are recognized.
       </Text>
       <Text style={styles.paragraph}>
-      &#8226; Opportunities to work on cutting-edge projects and learn from industry
-        experts.
+        &#8226; Opportunities to work on cutting-edge projects and learn from
+        industry experts.
       </Text>
       <Text style={styles.paragraph}>
-      &#8226; Career growth and professional development through training programs,
-        workshops, and mentorship.
+        &#8226; Career growth and professional development through training
+        programs, workshops, and mentorship.
       </Text>
       <Text>Competitive salaries and benefits</Text>
 
@@ -48,25 +47,35 @@ const Join = () => {
         provide real-world experience and mentorship from industry experts.
       </Text>
 
-      <Text style={styles.sectionTitle}>
-      How to Apply</Text>
+      <Text style={styles.sectionTitle}>How to Apply</Text>
 
-      <Text style={styles.paragraph}>
-      Applying to join our team is simple:
-      </Text>
+      <Text style={styles.paragraph}>Applying to join our team is simple:</Text>
       <Text>1. Visit our Careers Page to view current openings.</Text>
-      <Text>2. Submit your resume and a cover letter outlining your skills, experience, and why you want to work with us.</Text>
-      <Text>3. If shortlisted, you will be contacted for the next steps, including interviews and assessments.</Text>
+      <Text>
+        2. Submit your resume and a cover letter outlining your skills,
+        experience, and why you want to work with us.
+      </Text>
+      <Text>
+        3. If shortlisted, you will be contacted for the next steps, including
+        interviews and assessments.
+      </Text>
 
       <Text style={styles.sectionTitle}>Employee Benefits</Text>
 
       <Text style={styles.paragraph}>
-      We value our employees and provide a wide range of benefits, including:
+        We value our employees and provide a wide range of benefits, including:
       </Text>
-  <Text>&#8226; Comprehensive health insurance and wellness programs.</Text>
-  <Text>&#8226; Paid time off, including vacation, sick leave, and holidays.</Text>
-  <Text>&#8226; Professional development opportunities to advance your skills.</Text>
-  <Text>&#8226; Team-building activities and social events to foster camaraderie.</Text>
+      <Text>&#8226; Comprehensive health insurance and wellness programs.</Text>
+      <Text>
+        &#8226; Paid time off, including vacation, sick leave, and holidays.
+      </Text>
+      <Text>
+        &#8226; Professional development opportunities to advance your skills.
+      </Text>
+      <Text>
+        &#8226; Team-building activities and social events to foster
+        camaraderie.
+      </Text>
 
       <Text style={styles.footer}>
         For support, contact privacy@vishwatech.com

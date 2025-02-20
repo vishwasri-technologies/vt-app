@@ -24,7 +24,7 @@ export default function Aboutus() {
         <View style={styles.textOverlay}>
           <Text style={styles.subHeading}>Who We Are</Text>
           <Text style={styles.text}>
-            Vishware Technologies is a technology-driven company delivering
+            Vishwasri Technologies is a technology-driven company delivering
             innovative and high-performance software solutions to drive digital
             transformation.
           </Text>
@@ -109,13 +109,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginBottom: hp("5%"),
     position: "relative", // Allows text to overlay image
+    zIndex: 1, // Ensure text is above image
   },
   image: {
     width: wp("60%"),
     height: hp("30%"),
     borderRadius: wp("3%"),
     marginLeft: wp("2%"),
-    zIndex: 10, // Behind text overlay
+    zIndex: 10, // Behind text overlay error line.
     resizeMode: "contain",
   },
   textOverlay: {

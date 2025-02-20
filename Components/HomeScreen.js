@@ -30,14 +30,15 @@ import s6 from "../Images/student1.png";
 import jt from "../Images/jt.png";
 import s8 from "../Images/student3.png";
 import s9 from "../Images/mobile.png";
-import DrawerNavigator from "./DrawerNavigator";
+
 import portfolio from "./PortfolioScreen";
 
 const services = [
   { id: "1", title: "Web Development", image: s4 },
   { id: "2", title: "App Development", image: s2 },
-  { id: "3", title: "Marketing", image: s3 },
-  { id: "4", title: "Graphic Design", image: s1 },
+  { id: "3", title: "Graphic Design", image: s1 },
+  { id: "4", title: "Marketing", image: s3 },
+
 ];
 
 const projects = [
@@ -225,6 +226,7 @@ const styles = StyleSheet.create({
     left: wp("5%"),
     right: wp("5%"),
     zIndex: 10,
+    fontWeight: "bold",
   },
   searchContainer: {
     flexDirection: "row",

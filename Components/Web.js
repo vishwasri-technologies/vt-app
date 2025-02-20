@@ -8,7 +8,7 @@ import {
 import call from "../Images/call.png";
 import { ScrollView } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
-// import { use } from "react";
+
 
 export default function Web() {
   const navigation = useNavigation();

@@ -10,25 +10,23 @@ const Help = () => {
       <Text style={styles.heading}>Help and Support</Text>
       <Text style={styles.paragraph}>
         We are committed to efficient support to ensure your experience is as
-        smooth and seamless as possible. Whether you have questions, technical
-        concerns, or need assistance with our services, our team is here to help
-        and provide effective solutions tailored to your needs
+        smooth and seamless as possible.
       </Text>
       <Text style={styles.sectionTitle}>Support Channels</Text>
       <Text style={styles.paragraph}>
         You can reach our support team through the following channels:
       </Text>
       <Text style={styles.paragraph}>
-      &#8226; Email: Write to us at support vishwasritechnologies@vishcom.net for
-        detailed assistance.
+        &#8226; Email: Write to us at support vishwasritechnologies@vishcom.net
+        for detailed assistance.
       </Text>
       <Text style={styles.paragraph}>
-      &#8226; Phone: Call us directly at +91-9908208857 during business hours for
-        immediate help.
+        &#8226; Phone: Call us directly at +91-9908208857 during business hours
+        for immediate help.
       </Text>
       <Text style={styles.paragraph}>
-      &#8226; Online Portal: Submit a ticket through our Help and Support Portal,
-        where you can describe your issue and track its resolution
+        &#8226; Online Portal: Submit a ticket through our Help and Support
+        Portal, where you can describe your issue and track its resolution
       </Text>
 
       <Text style={styles.sectionTitle}>Knowledge Base</Text>

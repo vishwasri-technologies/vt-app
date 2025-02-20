@@ -10,9 +10,7 @@ const Terms = () => {
       <Text style={styles.heading}>Terms and Policies</Text>
       <Text style={styles.paragraph}>
         Our Terms and Policies ensure a transparent, fair, and secure experience
-        for all users. By using our services, you agree to the guidelines
-        outlined below, which define the responsibilities and expectations for
-        both parties.
+        for all users.
       </Text>
       <Text style={styles.sectionTitle}>General Terms</Text>
       <Text style={styles.paragraph}>
@@ -65,7 +63,6 @@ const Terms = () => {
         document on our website or contact us directly. We are here to help
         ensure your experience is smooth and straightforward.
       </Text>
-      
 
       <Text style={styles.footer}>
         For support, contact privacy@vishwatech.com

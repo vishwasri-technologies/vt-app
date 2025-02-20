@@ -107,7 +107,9 @@ const styles = StyleSheet.create({
   },
   card: {
     backgroundColor: "white",
-    margin: wp(5),
+    // margin: wp(5),
+    marginHorizontal: wp(5),
+    marginVertical: hp(1),
     borderRadius: 10,
   
     shadowColor: "#000",
@@ -156,16 +158,18 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   button: {
-    backgroundColor: "#4a90e2",
+    backgroundColor: "white",
     paddingVertical: hp("1%"),
     paddingHorizontal: wp("1%"),
     marginHorizontal: wp("28%"),
     marginVertical: hp("2%"),
     borderRadius: 5,
+    borderWidth: 1,
+    borderColor: "#4a90e2",
     alignItems: "center",
   },
   buttonText: {
-    color: "#fff",
+    color: "black",
     fontSize: wp("4%"),
     fontWeight: "bold",
   },

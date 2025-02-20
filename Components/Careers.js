@@ -66,7 +66,7 @@ export default function Careers() {
           <View style={{ flexDirection: 'row', alignItems: 'center' }}>
             <Icon name="briefcase-outline" size={wp('4%')} color="#333" />
 
-            <Text style={styles.jobExperience}>{job.experience}</Text>
+            <Text style={styles.jobExperience}>{job.experience}</Text>        
           </View>
           <Text style={styles.jobSkills}>{job.skills}</Text>
           <TouchableOpacity style={styles.applyButton}>
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#f9f9f9',
     padding: wp('4%'),
     borderRadius: wp('2%'),
-    marginBottom: hp('4%'),
+    marginBottom: hp('2%'),
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.9,
