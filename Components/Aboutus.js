@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
     height: hp("30%"),
     borderRadius: wp("3%"),
     marginLeft: wp("2%"),
-    zIndex: 10, // Behind text overlay error line.
+  
     resizeMode: "contain",
   },
   textOverlay: {
