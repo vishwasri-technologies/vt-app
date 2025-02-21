@@ -15,6 +15,8 @@ import {
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 
+
+
 const LoginUpScreen = ({ navigation }) => {
   const [emailOrPhone, setEmailOrPhone] = useState("");
   const [password, setPassword] = useState("");
@@ -176,9 +178,6 @@ const styles = StyleSheet.create({
 });
 
 export default LoginUpScreen;
-
-
-
 
 
 

@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import { useNavigation, DrawerActions } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
-import AsyncStorage from '@react-native-async-storage/async-storage';
+// import AsyncStorage from '@react-native-async-storage/async-storage';
 import image1 from "../Images/image1.png";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from "react-native-responsive-screen";
 import { RFPercentage } from "react-native-responsive-fontsize";
@@ -23,15 +23,16 @@ import s3 from "../Images/s3.png";
 import s4 from "../Images/s4.png";
 import s5 from "../Images/group.png";
 import s6 from "../Images/student1.png";
-import s7 from "../Images/student2.png";
+import jt from "../Images/jt.png";
 import s8 from "../Images/student3.png";
 import s9 from "../Images/mobile.png";
+import portfolio from "./PortfolioScreen";
 
 const services = [
   { id: "1", title: "Web Development", image: s4 },
   { id: "2", title: "App Development", image: s2 },
-  { id: "3", title: "Marketing", image: s3 },
-  { id: "4", title: "Graphic Design", image: s1 },
+  { id: "3", title: "Graphic Design", image: s1 },
+  { id: "4", title: "Marketing", image: s3 },
 ];
 
 const projects = [
@@ -40,18 +41,23 @@ const projects = [
     title: "EduNova",
     description: "A complete education management system designed for institutions to manage courses, student records, fees.",
     image: s6,
+    link:portfolio
   },
   {
     id: "2",
-    title: "EternaJewels",
-    description: "An elegant jewelry shopping platform offering a wide range of collections, personalized recommendations.",
-    image: s7,
+    title: "SriLaxmiBhagavan",
+    description:
+      "Developed a responsive e-commerce website with structured product categories and smooth navigation for an enhanced user experience.",
+    image: jt,
+    link:portfolio
   },
   {
     id: "3",
-    title: "TheraCare",
-    description: "A physiotherapy consultation app connecting patients with expert therapists, offering appointment booking.",
+    title: "TrustCare",
+    description:
+      "Developed a hospital appointment booking website for TrustCare, enabling easy scheduling, real-time updates, and automated confirmations.",
     image: s8,
+    link:portfolio
   },
 ];
 
@@ -112,12 +118,9 @@ const HomeScreen = () => {
     }
   }, [searchText]);
 
-  
-
   useEffect(() => {
     navigation.navigate("DrawerNavigator");
   }, [navigation]);
-
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -176,7 +179,7 @@ const HomeScreen = () => {
                     <Text style={styles.projectDescription}>{item.description}</Text>
                     <TouchableOpacity
                       style={styles.viewProfileButton}
-                      onPress={() => alert(`Viewing ${item.title} details`)}
+                      onPress={() =>  navigation.navigate(item.link)}
                     >
                       <Text style={styles.viewProfileButtonText}>View Profile</Text>
                     </TouchableOpacity>
@@ -258,7 +261,9 @@ const HomeScreen = () => {
                 <Text style={styles.projectDescription}>{item.description}</Text>
                 <TouchableOpacity
                   style={styles.viewProfileButton}
-                  onPress={() => alert(`Viewing ${item.title} details`)}
+                  onPress={()=>{
+                    navigation.navigate(item.link)
+                  }}
                 >
                   <Text style={styles.viewProfileButtonText}>View Profile</Text>
                 </TouchableOpacity>
@@ -278,8 +283,8 @@ const HomeScreen = () => {
                   "Have a project in mind? Contact us today to discuss your requirements. We're here to bring your vision to life!"
                 </Text>
   
-                <TouchableOpacity style={styles.customButton} onPress={() => alert("Calling...")}>
-                  <Text style={styles.buttonText}>Call Us</Text>
+                <TouchableOpacity style={styles.customButton} onPress={() => navigation.navigate("Contactus")}>
+                  <Text style={styles.buttonText}>Contact Us</Text>
                 </TouchableOpacity>
               </View>
             </View>

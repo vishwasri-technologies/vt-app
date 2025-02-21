@@ -75,7 +75,7 @@ export default function Careers() {
 
             <Text style={styles.applyButtonText} onPress={() => Alert.alert('Jobs','No Vacancy')}>Apply now</Text>
 
-            <Text style={styles.applyButtonText} onPress={() => alert('No applications')}>Apply now</Text>
+            {/* <Text style={styles.applyButtonText} onPress={() => alert('No applications')}>Apply now</Text> */}
 
           </TouchableOpacity>
         </View>

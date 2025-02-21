@@ -8,7 +8,7 @@ import {
 import office1 from "../Images/office1.png";
 import office2 from "../Images/office2.png";
 
-import BottomScreen from "../navigation/BottomScreen";
+// import BottomScreen from "../navigation/BottomScreen";
 
 
 export default function Aboutus() {
@@ -81,7 +81,7 @@ export default function Aboutus() {
       </View>
       <View>
 
-        <BottomScreen />
+        {/* <BottomScreen /> */}
 
       </View>
     </ScrollView>
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
     height: hp("30%"),
     borderRadius: wp("3%"),
     marginLeft: wp("2%"),
-    zIndex: 10, // Behind text overlay error line.
+  
     resizeMode: "contain",
   },
   textOverlay: {
