@@ -71,7 +71,7 @@ const HomeScreen = () => {
   // 📌 Function to Fetch Notifications
   const fetchNotifications = async () => {
     try {
-      const response = await axios.get("http://192.168.29.167:5000/Notifications");
+      const response = await axios.get("https://vt-app-backend-test.vishcom.net/Notifications");
       const unreadNotifications = response.data.filter((notif) => !notif.read);
       console.log("Unread Notifications Count:", unreadNotifications.length);
       setNotificationCount(unreadNotifications.length);
@@ -80,21 +80,18 @@ const HomeScreen = () => {
     }
   };
 
-  // 📌 Fetch Notifications Every 10 Seconds
+
   useEffect(() => {
-    
     fetchNotifications();
-  
   }, []);
 
-  // 📌 Handle Click (Show Alert & Reset Count)
   const handlePress = () => {
     alert("Notifications clicked!");
     axios
-      .post("http://192.168.29.167:5000/Notifications/mark-read")
+      .post("https://vt-app-backend-test.vishcom.net/Notifications/mark-read")
       .then(() => {
-        console.log("All notifications marked as read"); // ✅ Debugging
-        setNotificationCount(0); // ✅ Clear count on click
+        console.log("All notifications marked as read"); 
+        setNotificationCount(0); 
         navigation.navigate("Notifications");
       })
       .catch((error) => console.error("Error marking notifications as read:", error));
@@ -157,7 +154,7 @@ const HomeScreen = () => {
         />
       </View>
   
-      {/* ✅ Search Results Section */}
+      {/*Search Results Section */}
       {searchText !== "" ? (
         <>
           {filteredProjects.length > 0 && (
@@ -463,16 +460,10 @@ const styles = StyleSheet.create({
     fontSize: RFPercentage(2),
     fontWeight: "bold",
   },
-
-
-
-  
-
   projectsList: {
     paddingHorizontal: wp("5%"),
     paddingVertical: hp("3%"),
   },
-  
   projectCard: {
     width: wp("80%"),
     backgroundColor: "#f9f9f9",
@@ -522,8 +513,6 @@ const styles = StyleSheet.create({
     fontSize: RFPercentage(2),
     fontWeight: "bold",
   },
-
-
   mm: {
     flexGrow: 1,
     width: wp("100%"),
@@ -531,22 +520,22 @@ const styles = StyleSheet.create({
     marginTop: hp("-5%"),
   },
   mmContent: {
-    width: wp("85%"), // Increased width for better utilization
+    width: wp("85%"), 
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginHorizontal: wp("7.5%"), // Adjusted for better centering
+    marginHorizontal: wp("7.5%"), 
     marginVertical: hp("5%"),
   },
   textButtonContainer: {
     flex: 1,
     height: "100%",
-    justifyContent: "space-between", // Pushes text to top and button to bottom
+    justifyContent: "space-between", 
     paddingVertical: hp("1%"),
   },
   mmText: {
-    fontSize: hp("2%"), // Responsive font size
-    fontWeight: "bold", // Added bold text
+    fontSize: hp("2%"), 
+    fontWeight: "bold", 
     lineHeight: hp("2.7%"),
     color: "#333",
   },
@@ -554,7 +543,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#007bff",
     paddingVertical: hp("1.5%"),
     borderRadius: 8,
-    width: wp("40%"), // Match image reference width
+    width: wp("40%"), 
     alignItems: "center",
     marginTop: hp("2%"),
     // Shadow for better visibility (iOS)

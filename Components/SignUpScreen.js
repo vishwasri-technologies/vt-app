@@ -149,7 +149,7 @@ const SignUpScreen = ({ navigation }) => {
   const firstNameRegex = /^[a-zA-Z]+$/;
   const lastNameRegex = /^[a-zA-Z]+$/;
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/; // Corrected regex
+  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/; 
 
   let hasError = false;
 
@@ -189,7 +189,7 @@ const SignUpScreen = ({ navigation }) => {
   }
 
   if (!hasError) {
-    // Call API to sign up
+   
     try {
       const response = await axios.post('https://vt-app-backend-test.vishcom.net/SignUpScreen', {
         firstName,
@@ -199,7 +199,7 @@ const SignUpScreen = ({ navigation }) => {
       });
 
       if (response.status === 201) {
-        await AsyncStorage.setItem('firstName', firstName);
+
         alert('Registration successful');
         navigation.navigate('LoginUpScreen');
       } else {

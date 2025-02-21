@@ -22,7 +22,7 @@ const EditProfileScreen = () => {
   
   const [profileImage, setProfileImage] = useState(null);
 
-    // Fetch the saved profile data when the component mounts
+   
     useEffect(() => {
       const fetchProfileData = async () => {
         try {
@@ -51,10 +51,8 @@ const EditProfileScreen = () => {
     setForm({ ...form, [key]: value });
   };
 
-
-  // Handle Save Profile
   const handleSave = async () => {
-    const nameRegex = /^[A-Za-z\s]+$/; // Allows only letters and spaces
+    const nameRegex = /^[A-Za-z\s]+$/; 
   if (!form.name.trim()) {
     Alert.alert("Error", "Name is required!");
     return;
@@ -64,7 +62,6 @@ const EditProfileScreen = () => {
     return;
   }
 
-  // Validate Email: Must be in a valid email format
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   if (!form.email) {
     Alert.alert("Error", "Email is required!");
@@ -75,7 +72,6 @@ const EditProfileScreen = () => {
     return;
   }
 
-  // Validate Phone: Must contain exactly 10 digits
   const phoneRegex = /^[0-9]{10}$/;
   if (!form.phone) {
     Alert.alert("Error", "Phone number is required!");
@@ -86,7 +82,7 @@ const EditProfileScreen = () => {
     return;
   }
 
-  // Validate Date of Birth: Must be in dd-mm-yyyy format and a valid date
+  // Validate Date of Birth: Must be in dd-mm-yyyy format 
   const dobRegex = /^\d{4}-\d{2}-\d{2}$/;
 
 if (!dobRegex.test(form.dob)) {
@@ -94,8 +90,6 @@ if (!dobRegex.test(form.dob)) {
   return;
 }
 
-
-  // Validate Address: Can contain letters, numbers, and special characters
   if (!form.address.trim()) {
     Alert.alert("Error", "Address is required!");
     return;
@@ -117,9 +111,9 @@ if (!dobRegex.test(form.dob)) {
     }
 
     try {
-      const response = await fetch('http://192.168.29.167:5000/api/EditProfileScreen?email=${userEmail}', { 
+      const response = await fetch('https://vt-app-backend-test.vishcom.net/api/EditProfileScreen?email=${userEmail}', { 
         method: 'POST',
-        body: formData,  // ✅ Let the browser handle Content-Type automatically
+        body: formData,  
         headers: {
           'Accept': 'application/json'
         },
@@ -132,12 +126,11 @@ if (!dobRegex.test(form.dob)) {
         await AsyncStorage.setItem('phone', form.phone);
         await AsyncStorage.setItem('dob', form.dob);
         await AsyncStorage.setItem('address', form.address);
-        // Success: Profile updated, show success message
         Alert.alert("Success", "Profile updated successfully!", [
           { text: "OK", onPress: () => navigation.navigate('HomeScreen') }
         ]);
       } else {
-        // Error: Profile update failed
+       
         Alert.alert("Error", data.error || "Failed to update profile");
       }
     } catch (error) {
@@ -174,8 +167,7 @@ if (!dobRegex.test(form.dob)) {
         <TextInput style={styles.input}  value={form.dob} onChangeText={text => handleChange('dob', text)} />
         <Text>Address :</Text>
         <TextInput style={styles.input}  value={form.address} onChangeText={text => handleChange('address', text)} />
-        
-        {/* Save Button */}
+      
         <TouchableOpacity style={styles.saveButton} onPress={handleSave}>
           <Text style={styles.saveButtonText}>Save changes</Text>
         </TouchableOpacity>

@@ -1,14 +1,14 @@
 import { View, Text, StyleSheet, ActivityIndicator, FlatList, TouchableOpacity, ScrollView } from 'react-native';
 import React, { useState, useEffect } from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import BottomScreen from '../navigation/BottomScreen'; // Assuming BottomScreen is your bottom navigation component
+import BottomScreen from '../navigation/BottomScreen'; 
 
 export default function Notifications() {
   const [notifications, setNotifications] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://192.168.29.167:5000/Notifications')  
+    fetch('https://vt-app-backend-test.vishcom.net/Notifications')  
       .then((response) => response.json()) 
       .then((data) => {
         console.log('Notifications data:', data);
@@ -32,9 +32,9 @@ export default function Notifications() {
   );
 
   const handleViewAll = () => {
-    // Logic for handling View All button click
+ 
     console.log("View All notifications");
-    // You can navigate to a detailed page or perform another action
+ 
   };
 
   return (

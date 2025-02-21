@@ -14,13 +14,12 @@ import { Alert } from 'react-native';
 const ProfileScreen = () => {
   const navigation = useNavigation();
   
-  const [userData, setUserData] = useState(null); // To store fetched user data
-  const [loading, setLoading] = useState(true); // To track loading state
-  const [error, setError] = useState(null); // To store error messages if any
-  const [logoutModalVisible, setLogoutModalVisible] = useState(false); // Add this line to manage the modal visibility
+  const [userData, setUserData] = useState(null); 
+  const [loading, setLoading] = useState(true); 
+  const [error, setError] = useState(null); 
+  const [logoutModalVisible, setLogoutModalVisible] = useState(false); 
 
 
-  // Fetch user data from the backend API when the component mounts
   useEffect(() => {
 
     const fetchUserProfile = async () => {
@@ -35,7 +34,7 @@ const ProfileScreen = () => {
         setLoading(false);
       } catch (err) {
         setError(err.message);
-        Alert.alert("Error", err.message); // Show an alert in case of an error
+        Alert.alert("Error", err.message); 
       } finally {
         setLoading(false); 
       }
@@ -48,12 +47,12 @@ const ProfileScreen = () => {
   const handleLogout = async () => {
     try {
       console.log("Logging out...");
-      // Clear user session (e.g., token or any user-related data stored in AsyncStorage)
+    
       await AsyncStorage.removeItem('userToken');
       console.log("User session removed");
       Alert.alert("Logged out", "You have been logged out successfully.");
       
-      // Navigate to login screen after logout
+     
       navigation.navigate('LoginUpScreen');
     } catch (error) {
       console.log("Error during logout:", error);
@@ -77,9 +76,9 @@ const ProfileScreen = () => {
           />
         </View>
         {loading ? (
-          <ActivityIndicator size="large" color="#007BFF" /> // Loading indicator
+          <ActivityIndicator size="large" color="#007BFF" /> 
         ) : error ? (
-          <Text style={styles.errorText}>{error}</Text> // Show error if any
+          <Text style={styles.errorText}>{error}</Text> 
         ) : (
           
           <Text style={styles.userName}>{userData?.name || "User Name"}</Text>

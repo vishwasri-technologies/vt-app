@@ -34,7 +34,6 @@ export default function Feedback() {
   const [message, setMessage] = useState('');
   const [rating, setRating] = useState(0); 
 
-  // Correctly defined handleCheckboxChange function
   const handleCheckboxChange = (type) => {
     setFeedback((prev) => ({
       ...prev,
@@ -44,7 +43,7 @@ export default function Feedback() {
 
   
   const handleSubmit = async () => {
-    // Validation
+
     if (!/^[A-Za-z\s]+$/.test(fullName)) {
       alert('Full Name must contain only letters and spaces');
       return;
@@ -79,7 +78,7 @@ export default function Feedback() {
     };
   
     try {
-      const response = await fetch('http://192.168.29.167:5000/Feedback', {
+      const response = await fetch('https://vt-app-backend-test.vishcom.net/Feedback', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -88,7 +87,7 @@ export default function Feedback() {
       });
   
       const result = await response.json();
-      alert(result.message); // Show success message to the user
+      alert(result.message); 
     } catch (err) {
       console.error('Error submitting feedback:', err);
       alert('Error submitting feedback');
@@ -100,7 +99,7 @@ export default function Feedback() {
       <Text
         key={i}
         style={styles.star}
-        onPress={() => setRating(i + 1)} // Set rating when a star is clicked
+        onPress={() => setRating(i + 1)} 
       >
         {i < rating ? '\u2605' : '\u2606'}
       </Text>
@@ -127,26 +126,26 @@ export default function Feedback() {
           style={styles.input}
           placeholder="Full Name"
           value={fullName}
-          onChangeText={(text) => setFullName(text)} // Store full name
+          onChangeText={(text) => setFullName(text)} 
         />
         <TextInput
           style={styles.input}
           placeholder="Email Address"
           value={email}
-          onChangeText={(text) => setEmail(text)} // Store email
+          onChangeText={(text) => setEmail(text)} 
         />
         <TextInput
           style={styles.input}
           placeholder="Phone Number"
           value={phone}
-          onChangeText={(text) => setPhone(text)} // Store phone number
+          onChangeText={(text) => setPhone(text)} 
         />
         <TextInput
           style={[styles.input, { height: hp('15%') }]}
           placeholder="Message"
           multiline
           value={message}
-          onChangeText={(text) => setMessage(text)} // Store message
+          onChangeText={(text) => setMessage(text)} 
         />
 
         <TouchableOpacity style={styles.submitButton} onPress={handleSubmit}>
