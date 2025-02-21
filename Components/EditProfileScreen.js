@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, Image, TouchableOpacity, StyleSheet, ScrollView, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import * as ImagePicker from 'react-native-image-picker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {
@@ -52,28 +51,55 @@ const EditProfileScreen = () => {
     setForm({ ...form, [key]: value });
   };
 
-  const handleImagePick = () => {
-    ImagePicker.launchImageLibrary(
-      {
-        mediaType: 'photo',
-        quality: 0.8,
-      },
-      (response) => {
-        if (response.assets && response.assets.length > 0) {
-          const uri = response.assets[0].uri;
-          setProfileImage(uri);
-          AsyncStorage.setItem('profileImage', uri);
-        }
-      }
-    );
-  };
 
   // Handle Save Profile
   const handleSave = async () => {
-    if (!form.email) {
-      Alert.alert("Error", "Email is required!");
-      return;
-    }
+    const nameRegex = /^[A-Za-z\s]+$/; // Allows only letters and spaces
+  if (!form.name.trim()) {
+    Alert.alert("Error", "Name is required!");
+    return;
+  }
+  if (!nameRegex.test(form.name)) {
+    Alert.alert("Error", "Name must contain only letters!");
+    return;
+  }
+
+  // Validate Email: Must be in a valid email format
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  if (!form.email) {
+    Alert.alert("Error", "Email is required!");
+    return;
+  }
+  if (!emailRegex.test(form.email)) {
+    Alert.alert("Error", "Please enter a valid email address!");
+    return;
+  }
+
+  // Validate Phone: Must contain exactly 10 digits
+  const phoneRegex = /^[0-9]{10}$/;
+  if (!form.phone) {
+    Alert.alert("Error", "Phone number is required!");
+    return;
+  }
+  if (!phoneRegex.test(form.phone)) {
+    Alert.alert("Error", "Phone number must be 10 digits long!");
+    return;
+  }
+
+  // Validate Date of Birth: Must be in dd-mm-yyyy format and a valid date
+  const dobRegex = /^\d{4}-\d{2}-\d{2}$/;
+
+if (!dobRegex.test(form.dob)) {
+  Alert.alert("Error", "Please enter a valid date of birth in yyyy-mm-dd format!");
+  return;
+}
+
+
+  // Validate Address: Can contain letters, numbers, and special characters
+  if (!form.address.trim()) {
+    Alert.alert("Error", "Address is required!");
+    return;
+  }
 
     const formData = new FormData();
     formData.append('name', form.name);
@@ -91,7 +117,7 @@ const EditProfileScreen = () => {
     }
 
     try {
-      const response = await fetch('http://192.168.29.167:5000/api/EditProfileScreen', { 
+      const response = await fetch('http://192.168.29.167:5000/api/EditProfileScreen?email=${userEmail}', { 
         method: 'POST',
         body: formData,  // ✅ Let the browser handle Content-Type automatically
         headers: {
@@ -134,9 +160,9 @@ const EditProfileScreen = () => {
             source={profileImage ? { uri: profileImage } : require('../Images/p1.png')} 
             style={styles.profileImage} 
           />
-          <TouchableOpacity style={styles.editIcon} onPress={handleImagePick}>
+          {/* <TouchableOpacity style={styles.editIcon} onPress={handleImagePick}>
             <Icon name="pencil" size={wp('4%')} color="black" />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
         <Text>Name :</Text>
         <TextInput style={styles.input}  value={form.name} onChangeText={text => handleChange('name', text)} />

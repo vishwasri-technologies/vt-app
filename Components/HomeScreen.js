@@ -216,9 +216,9 @@ const HomeScreen = () => {
           {/* SERVICES SECTION */}
           <View style={styles.servicesHeader}>
             <Text style={styles.servicesTitle}>Our Services</Text>
-            <TouchableOpacity onPress={() => alert("Know More clicked!")}>
-              <Text style={styles.knowMoreText}>Know more</Text>
-            </TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate("ServicesScreen")}>
+          <Text style={styles.knowMoreText}>Know more</Text>
+        </TouchableOpacity>
           </View>
   
           <FlatList

@@ -23,7 +23,6 @@ const LoginUpScreen = ({ navigation }) => {
 
   const handleLogin = async () => {
     console.log("Login button pressed");
-
     if (!emailOrPhone.trim()) {
       Alert.alert("Validation Error", "Email or phone is required.");
       return;

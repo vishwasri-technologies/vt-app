@@ -199,6 +199,7 @@ const SignUpScreen = ({ navigation }) => {
       });
 
       if (response.status === 201) {
+        await AsyncStorage.setItem('firstName', firstName);
         alert('Registration successful');
         navigation.navigate('LoginUpScreen');
       } else {

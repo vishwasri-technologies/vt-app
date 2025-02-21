@@ -24,24 +24,24 @@ const ProfileScreen = () => {
 
     const fetchUserProfile = async () => {
       try { 
-        const response = await fetch("http://192.168.29.167:5000/api/ProfileScreen");
-        const data = await response.json();
-
-        if (!response.ok) {
-          throw new Error(data.error || "Failed to fetch profile");
+        const response = await fetch("http://192.168.29.167:5000/api/ProfileScreen?email=${userEmail}");
+       
+        const storedName = await AsyncStorage.getItem('name');
+        if (storedName) {
+          setUserData(prevState => ({ ...prevState, name: storedName }));
         }
 
-        setUserData(data); // Set user data to state
+        setLoading(false);
       } catch (err) {
         setError(err.message);
         Alert.alert("Error", err.message); // Show an alert in case of an error
       } finally {
-        setLoading(false); // Stop loading indicator
+        setLoading(false); 
       }
     };
 
     fetchUserProfile();
-  }, []); // The empty array ensures this effect only runs once when the component mounts
+  }, []); 
 
   
   const handleLogout = async () => {
@@ -80,9 +80,12 @@ const ProfileScreen = () => {
         ) : error ? (
           <Text style={styles.errorText}>{error}</Text> // Show error if any
         ) : (
-          <Text style={styles.userName}> {userData.name}</Text> // Display user name
+          
+          <Text style={styles.userName}> {userData.name}</Text> 
         )}
         {/* <Text style={styles.userName}>User Name</Text> */}
+        
+
         <TouchableOpacity style={styles.editProfileButton} onPress={() => navigation.navigate('EditProfileScreen')}>
           <Text style={styles.editProfileText}>Edit Profile</Text>
         </TouchableOpacity>
