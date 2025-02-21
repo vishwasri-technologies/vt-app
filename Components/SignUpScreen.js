@@ -191,7 +191,7 @@ const SignUpScreen = ({ navigation }) => {
   if (!hasError) {
     // Call API to sign up
     try {
-      const response = await axios.post('http://192.168.29.167:5000/SignUpScreen', {
+      const response = await axios.post('https://vt-app-backend-test.vishcom.net/SignUpScreen', {
         firstName,
         lastName,
         email,

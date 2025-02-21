@@ -13,6 +13,7 @@ import { Alert } from 'react-native';
 // import LoginUpScreen from './LoginUpScreen';
 const ProfileScreen = () => {
   const navigation = useNavigation();
+  
   const [userData, setUserData] = useState(null); // To store fetched user data
   const [loading, setLoading] = useState(true); // To track loading state
   const [error, setError] = useState(null); // To store error messages if any
@@ -24,7 +25,7 @@ const ProfileScreen = () => {
 
     const fetchUserProfile = async () => {
       try { 
-        const response = await fetch("http://192.168.29.167:5000/api/ProfileScreen?email=${userEmail}");
+        const response = await fetch("https://vt-app-backend-test.vishcom.net/api/ProfileScreen?email=${userEmail}");
        
         const storedName = await AsyncStorage.getItem('name');
         if (storedName) {
@@ -81,7 +82,7 @@ const ProfileScreen = () => {
           <Text style={styles.errorText}>{error}</Text> // Show error if any
         ) : (
           
-          <Text style={styles.userName}> {userData.name}</Text> 
+          <Text style={styles.userName}>{userData?.name || "User Name"}</Text>
         )}
         {/* <Text style={styles.userName}>User Name</Text> */}
         
