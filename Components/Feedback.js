@@ -18,7 +18,6 @@ const CustomCheckbox = ({ isChecked, onPress }) => (
 const feedbackType = {
 
   appPerformance: false,
-
   featureRequest: false,
   customerSupport: false,
   usabilityDesign: false,

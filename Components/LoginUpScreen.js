@@ -35,7 +35,7 @@ const LoginUpScreen = ({ navigation }) => {
     try {
       console.log("Sending login request:", { emailOrPhone, password });
 
-      const response = await axios.post("http://192.168.29.167:5000/LoginUpScreen", {
+      const response = await axios.post("https://vt-app-backend-test.vishcom.net/LoginUpScreen", {
         emailOrPhone,
         password,
       });
@@ -44,14 +44,13 @@ const LoginUpScreen = ({ navigation }) => {
 
       if (response.status === 200) {
         Alert.alert("Login Successful", `Welcome back, ${response.data.user.firstName}`);
-        navigation.navigate("HomeScreen"); // Navigate to home screen
+        navigation.navigate("HomeScreen"); 
       }
     } catch (error) {
       console.error("Error:", error.response?.data || error.message);
       Alert.alert("Login Failed", error.response?.data?.message || "Something went wrong");
     }
   };
-
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -177,8 +176,6 @@ const styles = StyleSheet.create({
 });
 
 export default LoginUpScreen;
-
-
 
 // import React, { useState } from "react";
 // import {
