@@ -51,9 +51,11 @@ const ProfileScreen = () => {
       await AsyncStorage.removeItem('userToken');
       console.log("User session removed");
       Alert.alert("Logged out", "You have been logged out successfully.");
-      
-     
-      navigation.navigate('LoginUpScreen');
+      navigation.reset({
+        index: 0,
+        routes: [{ name: 'LoginUpScreen' }],
+      });
+
     } catch (error) {
       console.log("Error during logout:", error);
       Alert.alert("Error", "An error occurred during logout.");
@@ -255,6 +257,5 @@ const styles = StyleSheet.create({
 });
 
 export default ProfileScreen;
-
 
 
